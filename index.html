@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Comparing Speed and Velocity</title>
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/plugins/bootstrap-5.1.3-dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="assets/css/fonts/font.css" />
+  <link rel="stylesheet" href="assets/css/themes.css">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/device.css" />
+  <link rel="stylesheet" href="assets/css/activity.css" />
+  <link rel="preload" href="assets/css/fonts/SegoeScript/segoesc.ttf" as="font" type="truetype" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container-so launch">
+      <div class="exp_header">
+        <div class="title">Exploriments<sup>&reg;</sup></div>
+        <div class="sub-title"><i>by</i></div>
+        <img class="logo" src="assets/images/logo.svg" alt="SCHOOLNET, Learning for life">
+      </div>
+      <div class="exp_body">
+        <div class="launch-bg">
+          <div class="img-bg"></div>
+        </div>
+        <div class="container position-relative">
+          <h1>
+            <span class="title titledesktop">Comparing Speed and Velocity</span>
+            <span class="title titlemobile">Comparing Speed and Velocity</span>
+            <!--<span class="sub-title">Addition and Multiplication (Birds)</span>-->
+          </h1>
+        </div>
+      </div>
+      <div class="exp_footer">
+        <div class="footer">
+          <div class="launch-btn-container">
+            <button id="btn_launch" class="btn btn_launch">Launch</button>
+          </div>
+          <div class="copyrighttext"><span>&copy; 2022, Schoolnet India Limited</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="container-so main">
+      <div class="exp_header">
+        <div class="header">
+          <div class="container head-pan-container">
+            <div class="leftpan">
+              <span class="title">Exploriments<sup>&reg;</sup></span>
+              <span class="sub-title"><i>by</i></span>
+              <img class="main-src-logo" src="assets/images/logo.svg">
+            </div>
+            <div class="rightpan">
+              <h1>
+                <span class="title">Comparing Speed and Velocity</span>
+                <!--<span class="sub-title">Addition and Multiplication (Birds)</span>-->
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-theme-wrap">
+        <button id="btn_themes" class="btn btn_themes" title="Themes" data-bs-toggle="modal"
+          data-bs-target="#themeModalPopup" data-toggle="tooltip" data-placement="bottom">
+        </button>
+      </div>
+
+      <div class="exp_body">
+        <div class="exp_body_header"></div>
+        <div class="exp_body_content">
+          <div id="split-main" class="split">
+            <div class="activityText">
+              <p>In this exploriment the object moves forward for 3 seconds at a constant speed and backward for 2
+                seconds. Suppose it moves backwards at 4 cm/s, its speed is 4 cm/s. Its <span
+                  class="bold">VELOCITY</span>, however, is <span class="bold">-4 cm/s.</span> Velocity has direction,
+                speed does not.</p>
+            </div>
+            <div class="trailWrapper">
+
+            </div>
+          </div>
+        </div>
+        <div class="popup info popup_inst">
+          <div class="containerproc">
+            <div class="popuphead container">
+              <h2>Instructions</h2>
+              <div class="closepopup">
+                <button class="btn-close-popup" title="Close">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16.14" height="16.14">
+
+                    <g id="Layer_2" data-name="Layer 2">
+                      <g id="Layer_1-2" data-name="Layer 1">
+                        <g id="New_Symbol_10" data-name="New Symbol 10">
+                          <line class="cls-3" x1="15.14" y1="1" x2="1" y2="15.14" />
+                          <line class="cls-3" x1="15.14" y1="15.14" x2="1" y2="1" />
+                        </g>
+                      </g>
+                    </g>
+
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="popupcontent">
+              <div class="procBox container">
+                <span class="procstepno bold">1.</span>
+                <p class="bold">Speed v/s Velocity</p>
+                <p>
+                  This exploriment explains the difference between speed and velocity.
+                </p>
+                <p>
+                  Suppose a body moves at a speed of 10 cm/s. Then its speed and velocity are both 10 cm/s. Now suppose
+                  it moves backwards at 7 cm/s. Its speed is 7 cm/s but its velocity is -7 cm/s.
+                </p>
+                <p>
+                  Speed is what is called as a scalar - a number. Velocity is what is called a vector - it has a number
+                  AND a direction. The velocity is -7 cm/s because the direction is backwards.
+                </p>
+              </div>
+              <hr />
+              <div class="procBox container">
+                <span class="procstepno bold">2.</span>
+                <div class="instrTrails"></div>
+                <p>
+                  The trails above show the movement forward at 10 cm/s for 3 secs and backward at 7 cm/s for 2 secs.
+                </p>
+              </div>
+              <hr />
+              <div class="procBox container">
+                <span class="procstepno bold">3.</span>
+                <p>The speed v/s time graph looks like this -</p>
+                <div class="instrSpeedVsTimeGraph"></div>
+              </div>
+              <hr />
+              <div class="procBox container">
+                <span class="procstepno bold">4.</span>
+                <p>The velocity v/s time graph looks like this -</p>
+                <div class="instrVelocityVsTimeGraph"></div>
+              </div>
+              <div class="procBox container">
+                <span class="procstepno bold">5.</span>
+                <p>
+                  This exploriment provides a series of motions with a speed graph and a velocity graph. You are
+                  supposed to go through them and understand the way the graphs are constructed.
+                </p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="exp_body_footer"></div> -->
+      </div>
+      <div class="exp_footer">
+        <div class="footer">
+          <div class="footer-menu-container left">
+            <div class="btn-wrap btn-wrap-info">
+              <button id="btn_info" class="btn btn_info" title="Instructions" data-toggle="tooltip">
+                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="-5 -6 50 50">
+                  <g id="Layer_2" data-name="Layer 2">
+                    <g id="Desktop">
+                      <g id="page_04">
+                        <path class="cls-1" d="M25.48,13.68a14,14,0,1,1-2.35-2.33" />
+                        <path class="cls-1" d="M22.21,16.88a9.39,9.39,0,1,1-2.5-2.42" />
+                        <path class="cls-1" d="M18.56,20.37a4.53,4.53,0,1,1-4.06-2.52,4.46,4.46,0,0,1,1.76.35" />
+                        <line class="cls-1" x1="13.68" y1="23.2" x2="35.06" y2="1.82" />
+                        <polygon class="cls-1"
+                          points="36.32 5.08 30.52 10.88 26.57 10.25 25.94 6.3 31.75 0.5 32.38 4.45 36.32 5.08" />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </button>
+            </div>
+            <div class="btn-wrap">
+              <button id="btn_go" class="btn button_style btn_go" title="Go">
+                Go
+              </button>
+              <button id="next_btn" class="btn button_style btn_next" title="Next">
+                Next
+              </button>
+            </div>
+          </div>
+          <div class="copyrighttext"><span>&copy; 2022, Schoolnet India Limited</span></div>
+        </div>
+      </div>
+
+      <!-- Explain Modal Popup -->
+      <div id="explain_mc" class="popup" tabindex="-1" role="dialog" aria-labelledby="explainModalPopupTitle"
+        aria-hidden="true">
+        <div class="popuphead container">
+          <h2>Explanation</h2>
+          <div class="closepopup">
+            <button class="btn-close-popup" title="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16.14" height="16.14">
+
+                <g id="Layer_2" data-name="Layer 2">
+                  <g id="Layer_1-2" data-name="Layer 1">
+                    <g id="New_Symbol_10" data-name="New Symbol 10">
+                      <line class="cls-3" x1="15.14" y1="1" x2="1" y2="15.14" />
+                      <line class="cls-3" x1="15.14" y1="15.14" x2="1" y2="1" />
+                    </g>
+                  </g>
+                </g>
+
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="popupcontent">
+          <div class="birdsExplain_container">
+            <div class="row Explain_mc_birdrow">
+              <div class="col colbird bird1"></div>
+              <div class="col colbird bird2"></div>
+              <div class="col colbird bird3"></div>
+              <div class="col colbird bird4"></div>
+              <div class="col colbird bird5"></div>
+            </div>
+            <div class="birdsExplain">
+              <div class="birdsExplain_div" id="eagleExplain_mc">
+                <div class="birdsExplain_div eaglePix_explain"></div>
+              </div>
+              <div id="bird1_birdsExplain_txt" class="birdsExplain_txt">1932 eagle</div>
+              <div class="birdsExplain_div" id="hornbillExplain_mc">
+                <div class="birdsExplain_div hornbillPix_explain"></div>
+              </div>
+              <div id="bird2_birdsExplain_txt" class="birdsExplain_txt">1932 owl</div>
+              <div class="birdsExplain_div" id="owlExplain_mc">
+                <div class="birdsExplain_div owlPix_explain"></div>
+              </div>
+              <div id="bird3_birdsExplain_txt" class="birdsExplain_txt">1932 owl</div>
+              <div class="birdsExplain_div" id="parrotExplain_mc">
+                <div class="birdsExplain_div parrotPix_explain"></div>
+              </div>
+              <div id="bird4_birdsExplain_txt" class="birdsExplain_txt">1932 parrot</div>
+              <div class="birdsExplain_div" id="pelicanExplain_mc">
+                <div class="birdsExplain_div pelicanPix_explain"></div>
+              </div>
+              <div id="bird5_birdsExplain_txt" class="birdsExplain_txt">1932 pelican</div>
+              <div class="birdsExplain_div" id="woodpeckerExplain_mc">
+                <div class="birdsExplain_div woodpeckerPix_explain"></div>
+              </div>
+              <div class="birdsExplain_div" id="swanExplain_mc">
+                <div class="birdsExplain_div swanPix_explain"></div>
+              </div>
+              <div class="birdsExplain_div" id="sparrowExplain_mc">
+                <div class="birdsExplain_div sparrowPix_explain"></div>
+              </div>
+              <div class="birdsExplain_div" id="robinExplain_mc">
+                <div class="birdsExplain_div robinPix_explain"></div>
+              </div>
+              <div class="birdsExplain_div" id="pigeonExplain_mc">
+                <div class="birdsExplain_div pigeonPix_explain"></div>
+              </div>
+            </div>
+          </div>
+          <div class="birdsAnswer_container">
+            <table class="centertable">
+              <tr class="exprs_txt">
+                <td></td>
+                <td id="expr1_txt">A</td>
+                <td id="exprPlus1_mc">+</td>
+                <td id="expr2_txt">A</td>
+                <td id="exprPlus2_mc">+</td>
+                <td id="expr3_txt">A</td>
+                <td id="exprPlus3_mc">+</td>
+                <td id="expr4_txt">A</td>
+                <td id="exprPlus4_mc">+</td>
+                <td id="expr5_txt">A</td>
+              </tr>
+              <tr class="vals_txt">
+                <td>=</td>
+                <td id="val1_txt">19325</td>
+                <td id="valPlus1_mc">+</td>
+                <td id="val2_txt">19325</td>
+                <td id="valPlus2_mc">+</td>
+                <td id="val3_txt">19325</td>
+                <td id="valPlus3_mc">+</td>
+                <td id="val4_txt">19325</td>
+                <td id="valPlus4_mc">+</td>
+                <td id="val5_txt">19325</td>
+              </tr>
+              <tr class="answer_txt">
+                <td>=</td>
+                <td id="answer_txt" class="answer_val">19325</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Theme Modal Popup -->
+  <div class="modal fade themepopup" id="themeModalPopup" tabindex="-1" role="dialog"
+    aria-labelledby="themeModalPopupTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="themeModalPopupTitle">Themes</h2>
+          <div class="closepopup">
+            <button class="btn-close-theme-popup" data-bs-dismiss="modal" title="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16.14" height="16.14">
+                <g id="Layer_2" data-name="Layer 2">
+                  <g id="Layer_1-2" data-name="Layer 1">
+                    <g id="New_Symbol_10" data-name="New Symbol 10">
+                      <line class="cls-3" x1="15.14" y1="1" x2="1" y2="15.14" />
+                      <line class="cls-3" x1="15.14" y1="15.14" x2="1" y2="1" />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="modal-body custom-radios">
+          <div class="form-check theme-row">
+            <input class="form-check-input radioTheme" data-theme-id="green" type="radio" name="radioTheme"
+              id="radioThemeGreen" checked>
+            <label class="form-check-label" for="radioThemeGreen">
+              <span>
+                <img src="assets/images/check-icn.svg" alt="Checked Icon" />
+              </span>
+              Green
+              <div class="theme-green color-row">
+                <div class="col1"></div>
+                <div class="col2"></div>
+                <div class="col3"></div>
+              </div>
+            </label>
+          </div>
+          <div class="form-check theme-row">
+            <input class="form-check-input radioTheme" data-theme-id="purple" type="radio" name="radioTheme"
+              id="radioThemePurple" checked>
+            <label class="form-check-label" for="radioThemePurple">
+              <span>
+                <img src="assets/images/check-icn.svg" alt="Checked Icon" />
+              </span>
+              Purple
+              <div class="theme-purple color-row">
+                <div class="col1"></div>
+                <div class="col2"></div>
+                <div class="col3"></div>
+              </div>
+            </label>
+          </div>
+          <div class="form-check theme-row">
+            <input class="form-check-input radioTheme" data-theme-id="orange" type="radio" name="radioTheme"
+              id="radioThemeOrange" checked>
+            <label class="form-check-label" for="radioThemeOrange">
+              <span>
+                <img src="assets/images/check-icn.svg" alt="Checked Icon" />
+              </span>
+              Orange
+              <div class="theme-orange color-row">
+                <div class="col1"></div>
+                <div class="col2"></div>
+                <div class="col3"></div>
+              </div>
+            </label>
+          </div>
+          <div class="form-check theme-row">
+            <input class="form-check-input radioTheme" data-theme-id="maroon" type="radio" name="radioTheme"
+              id="radioThemeMaroon" checked>
+            <label class="form-check-label" for="radioThemeMaroon">
+              <span>
+                <img src="assets/images/check-icn.svg" alt="Checked Icon" />
+              </span>
+              Maroon
+              <div class="theme-maroon color-row">
+                <div class="col1"></div>
+                <div class="col2"></div>
+                <div class="col3"></div>
+              </div>
+            </label>
+          </div>
+          <div class="form-check theme-row">
+            <input class="form-check-input radioTheme" data-theme-id="blue" type="radio" name="radioTheme"
+              id="radioThemeBlue" checked>
+            <label class="form-check-label" for="radioThemeBlue">
+              <span>
+                <img src="assets/images/check-icn.svg" alt="Checked Icon" />
+              </span>
+              Blue
+              <div class="theme-blue color-row">
+                <div class="col1"></div>
+                <div class="col2"></div>
+                <div class="col3"></div>
+              </div>
+            </label>
+          </div>
+          <div class="form-check theme-row">
+            <input class="form-check-input radioTheme" data-theme-id="black" type="radio" name="radioTheme"
+              id="radioThemeBlack" checked>
+            <label class="form-check-label" for="radioThemeBlack">
+              <span>
+                <img src="assets/images/check-icn.svg" alt="Checked Icon" />
+              </span>
+              Black
+              <div class="theme-black color-row">
+                <div class="col1"></div>
+                <div class="col2"></div>
+                <div class="col3"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Best Viewed Poup msg-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="bestviewed_popup_msg">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" style="border: 0px;">
+        <div class="modal-body" style="text-align: center;">
+          <p><img src="assets/images/phone-landscape-pngrepo-com.png" width="100px"></p>
+          <p>This Activity is best viewed in landscape orientation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="preloader">
+    <div class="preloadpanel">
+      <div class="preloadingInstr">
+        <div class="progress"></div>
+        <div class="progress-text">
+          Loading... 100%
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Close Button SVG -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" width="16.14" height="16.14">
+    <symbol id="closebutton" viewBox="0 0 16.14 16.14">
+      <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+          <g id="New_Symbol_10" data-name="New Symbol 10">
+            <line class="cls-3" x1="15.14" y1="1" x2="1" y2="15.14" />
+            <line class="cls-3" x1="15.14" y1="15.14" x2="1" y2="1" />
+          </g>
+        </g>
+      </g>
+    </symbol>
+  </svg>
+
+  <script src="assets/plugins/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="assets/plugins/jquery-ui-1.13.0-1.custom/jquery-ui.min.js"></script>
+  <script src="assets/plugins/jquery-ui-touch/jquery.ui.touch.js"></script>
+  <script src="assets/plugins/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/preloader.js"></script>
+  <script src="assets/plugins/splitjs/split.min.js"></script>
+
+  <script src="assets/js/themes.js"></script>
+  <script src="assets/js/guided_tour.js"></script>
+  <script src="assets/js/screen_splitter.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/activity.js"></script>
+</body>
+
+</html>

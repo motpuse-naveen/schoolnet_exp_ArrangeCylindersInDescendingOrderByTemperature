@@ -1,0 +1,398 @@
+stop();
+var myCur_mc:MovieClip = this;
+var mCurNo = 0;
+var isFirstTime:Boolean = true
+var myMCEffects:clsMCEffects = null;
+var isMCEffectsOn:Boolean = true
+
+this.attachMovie("thermometerX_sym", "thermometer_mc", this.getNextHighestDepth() )
+thermometer_mc._x = 100
+thermometer_mc._y = 375
+
+boundary_mc._visible = false
+hitArea_mc._visible = false
+
+
+thermometer_mc.rotation = +5
+thermometer_mc.boundary_mc = boundary_mc
+thermometer_mc.isDraggable = true
+var thermoX:Number = thermometer_mc._x
+var thermoY:Number = thermometer_mc._y
+
+
+instructionPpt_mc.isMinimizable = false
+instructionPpt_mc.isMinimized = false
+instructionPpt_mc.execInstructionPpt("descendingCylinderTemperature_InstrBk")
+
+onUnload = function() {
+	if (myMCEffects != null) {
+		myMCEffects.disposeMCEffects()
+		mObj.myMCEffects = null
+	}
+
+	
+}
+
+
+var bodyArray:Array = new Array(6)
+
+function createBodies() {
+	
+	if (!isFirstTime) {
+		for (var i=0; i<= 5; i++) {
+			bodyArray[i].removeMovieClip()
+			bodyArray[i] = null
+		}
+	}
+	
+	bodyArray[0] = clsSimpleBodyX.createSimpleBody("cylinderBodyX_bd", myCur_mc, "cylinderBodyX_bd" + int(Math.random() * 1000000000) + "_mc", 35,[100, 0, 50, 0, 25, 0, 100, 0], "", 0xFFFFFF)
+	bodyArray[1] = clsSimpleBodyX.createSimpleBody("cylinderBodyX_bd", myCur_mc, "cylinderBodyX_bd" + int(Math.random() * 1000000000) + "_mc", 35,[100, 0, 80, 0, 0, 0, 100, 0], "", 0xFFFFFF)
+	bodyArray[2] = clsSimpleBodyX.createSimpleBody("cylinderBodyX_bd", myCur_mc, "cylinderBodyX_bd" + int(Math.random() * 1000000000) + "_mc", 35,[80, 0, 80, 0, 90, 0, 100, 0], "", 0xFFFFFF)
+	
+	bodyArray[3] = clsSimpleBodyX.createSimpleBody("cylinderBodyX_bd", myCur_mc, "cylinderBodyX_bd" + int(Math.random() * 1000000000) + "_mc", 35,[100, 0, 100, 0, 0, 0, 100, 0], "", 0xFFFFFF)
+	bodyArray[4] = clsSimpleBodyX.createSimpleBody("cylinderBodyX_bd", myCur_mc, "cylinderBodyX_bd" + int(Math.random() * 1000000000) + "_mc", 35,[100, 0, 70, 0, 80, 0, 100, 0], "", 0xFFFFFF)
+	bodyArray[5] = clsSimpleBodyX.createSimpleBody("cylinderBodyX_bd", myCur_mc, "cylinderBodyX_bd" + int(Math.random() * 1000000000) + "_mc", 35,[70, 0, 80, 0, 100, 0, 100, 0], "", 0xFFFFFF)
+	
+	
+	for (var i=0; i<= 5; i++) {
+		bodyArray[i].boundary = boundary_mc
+		bodyArray[i].librarySymbol = "cylinderBodyX_bd"
+		bodyArray[i].tag = "X"
+		setDragDropBehaviour(bodyArray[i])
+		
+	}
+	isFirstTime = false
+
+}
+
+
+resetExperiment() 
+
+
+function resetExperiment() {
+	var mBody:clsBodyX;
+	
+	if (myMCEffects != null) {
+		myMCEffects.disposeMCEffects()
+		mObj.myMCEffects = null
+	}
+	
+	createBodies()
+	
+	thermometer_mc.attachFixedTempMC(null, 25)
+	thermometer_mc._x = thermoX
+	thermometer_mc._y = thermoY
+
+	mCurNo = 0;
+	var my_txt:TextField 
+	correct_mc._visible = false
+	wrong_mc._visible = false
+	
+	OK_btn._visible = true	
+	answer_btn._visible = true
+	speed_btn._visible = false
+	isMCEffectsOn = false
+	
+	for (var i=0; i<= 5; i++) {
+		bodyArray[i].tag = "" + (30 + 11*i + int(7 * Math.random() ) )
+
+	}
+	
+	
+	clsUtils.randomizeArray(bodyArray)
+	bodyArray[0].legend = "A"
+	bodyArray[1].legend = "B"
+	bodyArray[2].legend = "C"
+	bodyArray[3].legend = "D"
+	bodyArray[4].legend = "E"
+	bodyArray[5].legend = "F"
+	clsUtils.randomizeArray(bodyArray)
+	
+	
+	for (var i=0; i<= 5; i++) {
+		bodyArray[i].bodyWidth = 40 + i*10
+
+		mCurNo = mCurNo  + int(Math.random()*5) + 2
+				
+	}
+	
+	
+	clsUtils.randomizeArray(bodyArray)
+	
+
+	redrawBodies()
+	isMCEffectsOn = true
+}
+
+
+function setDragDropBehaviour(myBody:clsBodyX) {
+	
+	myBody.beforeDragDropStarts = function() {
+		this.swapDepths(this._parent.getNextHighestDepth() )
+		this._parent.correct_mc._visible = false
+		this._parent.wrong_mc._visible = false
+		thermometer_mc.attachFixedTempMC(null, 25)
+		thermometer_mc._x = thermoX
+		thermometer_mc._y = thermoY
+		
+
+		for (var i:Number=0; i < bodyArray.length; i++) {
+			if (bodyArray[i] == this) {
+				bodyArray.splice(i,1)
+				redrawBodies()
+				return
+			}
+		}
+	}
+	
+	myBody.afterDragDropEnds = function() {
+		var curBodyNo:Number
+		var tempBody:clsSimpleBodyX
+		
+
+		for (var i:Number = 0; i<bodyArray.length ; i++) {
+			if (this.isMovieClipIntersected(hitArea_mc)){ 
+				if ( (this._x < bodyArray[i]._x) || (  (this._x > bodyArray[i]._x) && (this._x + this._width <= bodyArray[i]._x) ) ) {
+					bodyArray.splice(curBodyNo, 1)
+					bodyArray.splice(i,0,this)
+					redrawBodies()
+					return
+				}
+			}
+		}
+		
+		
+		bodyArray.push(this)
+		redrawBodies()
+		return
+	}
+
+}
+
+
+
+reset_btn.onPress = function() {
+	resetExperiment()
+}
+
+OK_btn.onPress = function() {
+	
+	var mResult:Boolean = getResult()
+	if (!mResult) {
+		this._parent.correct_mc._visible = false
+		this._parent.wrong_mc._visible = true
+		this._visible = true
+
+		this._parent.answer_btn._visible = true
+	}
+	else {
+		this._parent.correct_mc._visible = true
+		this._parent.wrong_mc._visible = false
+		this._visible = false
+		this._parent.answer_btn._visible = false
+		this._parent.speed_btn._visible = false
+		freezeAllBodies()
+
+	}
+
+
+}
+
+
+function getResult():Boolean {
+	var mResult:Boolean  = true
+
+	if (bodyArray.length != 6) {
+		mResult = false
+	}
+	else {
+		for (var i:Number = 0; i<= 4; i++) {
+			if (Number(bodyArray[i].tag) < Number(bodyArray[i+1].tag)) {
+				mResult = false
+				break;
+			}
+		}
+	}
+	return mResult
+}
+
+answer_btn.onPress = function() {
+	this._visible = false
+	this._parent.speed_btn._visible = true
+	this._parent.OK_btn._visible = false
+	this._parent.correct_mc._visible = false
+	this._parent.wrong_mc._visible = false
+	freezeAllBodies()
+	showAnswer()	
+}
+
+speed_btn.onPress = function() {
+	this._visible = false
+	speedAnswer()	
+}
+
+
+function showAnswer() {
+	var mFlag:Boolean = true
+	var mFromNo:Number = -1
+	var mBody:clsBodyX;
+	var mFound:Boolean = false;
+	var mTempBody:clsBodyX;
+	var xVal:Number 
+	
+	if (thermometer_mc.attachedMC != null) {
+		thermometer_mc.attachFixedTempMC(null, 25)
+		thermometer_mc._x = thermoX
+		thermometer_mc._y = thermoY
+		
+	}
+	
+	if (getResult() ) {
+		answer_btn._visible = false
+		speed_btn._visible = false
+		if (myMCEffects != null) {
+			myMCEffects.disposeMCEffects()
+			myMCEffects = null
+		}
+		return		
+	}
+	
+	myMCEffects = new clsMCEffects()
+	myMCEffects.afterMCEffectsEnds = function() {
+		showAnswer() 
+	}
+
+	
+	for (var i:Number = 0; i < 5; i++) {
+		if (Number(bodyArray[i].tag) < Number(bodyArray[i+1].tag)) {
+			mFromNo = i
+			mFlag = false
+			break;
+		}
+	}
+	
+	if (!mFlag) {
+		mTempBody = bodyArray[mFromNo]
+		bodyArray[mFromNo] = bodyArray[mFromNo + 1]
+		bodyArray[mFromNo + 1] = mTempBody
+
+		xVal= hitArea_mc._x + 10
+	
+		for (var i:Number=0; i< 6; i++ ) {
+			mBody =	bodyArray[i]
+			myMCEffects.changePosition(mBody, xVal, hitArea_mc._y + hitArea_mc._height - bodyArray[i]._height, 1, 5) 
+			xVal = xVal + bodyArray[i]._width + 30 
+	
+		}
+			
+		myMCEffects.execMCEffects(50) 
+		
+	}
+
+}
+
+
+
+function speedAnswer() {
+	var mFlag:Boolean = true
+	var mBody:clsBodyX;
+	var mTempBody:clsBodyX;
+	
+
+	myMCEffects.disposeMCEffects()
+	myMCEffects = null
+	
+	mFlag = false	
+	while (!mFlag) {
+		mFlag = true
+		
+		
+		for (var i:Number = 0; i < bodyArray.length; i++) {
+			if (Number(bodyArray[i].tag) < Number(bodyArray[i+1].tag)) {
+				mTempBody = bodyArray[i]
+				bodyArray[i] = bodyArray[i + 1]
+				bodyArray[i+ 1] = mTempBody
+				mFlag = false
+			}
+		}
+	}
+		
+	redrawBodies()
+}
+
+
+
+function redrawBodies() {
+	var xVal:Number 
+
+	if (isMCEffectsOn) {
+		if (myMCEffects != null) {
+			myMCEffects.disposeMCEffects()
+			myMCEffects = null
+		}
+		
+		myMCEffects = new clsMCEffects()
+
+		myMCEffects.afterMCEffectsEnds = function() {
+			myMCEffects.disposeMCEffects()
+			mObj.myMCEffects = null
+		}
+		
+		xVal= hitArea_mc._x + 10
+	
+		for (var i:Number=0; i< bodyArray.length ; i++ ) {
+			mBody =	bodyArray[i]
+			myMCEffects.changePosition(mBody, xVal, hitArea_mc._y + hitArea_mc._height - bodyArray[i]._height, 1, 5) 
+			xVal = xVal + bodyArray[i]._width + 30 
+	
+		}
+			
+		myMCEffects.execMCEffects(50) 
+	}
+	else {
+		xVal = hitArea_mc._x + 10
+	
+		for (var i=0; i< bodyArray.length ; i++) {
+			bodyArray[i]._y = hitArea_mc._y + hitArea_mc._height - bodyArray[i]._height
+			bodyArray[i]._x = xVal
+			xVal = xVal + bodyArray[i]._width + 30 
+		}
+				
+	}
+}
+			
+
+			
+thermometer_mc.beforeDragDropStarts = function() {
+	if (this.attachedMC != null) {
+		this.attachFixedTempMC(null, 25)
+	}
+	this.swapDepths(this._parent.getNextHighestDepth() )
+
+}
+
+	
+		
+			
+thermometer_mc.afterDragDropEnds = function() {
+	var mFlag:Boolean = false;
+	for (var i:Number = 0; i < 6; i++) {
+		if (this.device_mc.metalTip_mc.hitTest(bodyArray[i])) {
+			this.snapThermometerTipAtPointInParent(bodyArray[i]._x + bodyArray[i]._width/2, bodyArray[i]._y + bodyArray[i]._height/2 )
+			this.attachFixedTempMC(bodyArray[i], Number(bodyArray[i].tag))
+			mFlag = true
+			break
+		}
+	}
+	if (!mFlag) {
+		this._x = thermoX
+		this._y = thermoY
+		this.attachFixedTempMC(null, 25)
+	}
+}
+
+function freezeAllBodies() {
+	for (var i:Number = 0; i < 6; i++) {
+		bodyArray[i].isDraggable = false
+	}
+}

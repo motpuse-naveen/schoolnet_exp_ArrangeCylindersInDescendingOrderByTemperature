@@ -1,0 +1,378 @@
+.launch .exp_body h1 {
+  font-size: 54px;
+}
+
+.launch .exp_body h1 .sub-title,
+.launch .exp_header .sub-title {
+  font-size: 18px;
+}
+
+.container-so.main .exp_header .header h1 .title {
+  font-size: 16px;
+}
+
+.container-so.main .exp_header .header h1 .sub-title {
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+.cust-popup.settings .popupcontent {
+  font-size: 11px;
+}
+
+.wrapper[device="desktop"] .settingsCol .col-lg-3.col-md-3.col-sm-12 {
+  width: auto;
+}
+#split-0,
+#split-1 {
+  overflow: auto;
+}
+#split-1 {
+  background-color: #f2f2f2;
+}
+/**/
+
+@media only screen and (min-width: 321px) {
+  .container-so.main .exp_header .header h1 .sub-title {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 530px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+  /*BOB Style*/
+
+  /*END BOB Style*/
+}
+@media only screen and (min-width: 560px) {
+  .col-sm-12 {
+    width: 50%;
+  }
+  .container-so.main .exp_header .header {
+    display: block;
+  }
+  .launch .copyrighttext {
+    font-size: 11px;
+    color: var(--theme-copy-text);
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    justify-content: right;
+    width: auto;
+    background: transparent;
+    padding: 0;
+  }
+
+  .container-so.main .exp_footer .footer .copyrighttext {
+    font-size: 11px;
+    color: var(--theme-copy-text);
+    position: absolute;
+    right: 10px;
+    bottom: 3px;
+    justify-content: right;
+    display: block;
+    width: 130px;
+    text-align: right;
+  }
+}
+@media only screen and (min-width: 731px) {
+  .container-so.main .exp_header .header {
+    display: block;
+  }
+  .launch .exp_footer .footer {
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+  .launch .copyrighttext {
+    font-size: 11px;
+    color: var(--theme-copy-text);
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    justify-content: right;
+    width: auto;
+    background: transparent;
+    padding: 0;
+  }
+  .launch .exp_body .launch-bg {
+    padding-top: 58px;
+  }
+  .container-so.main .exp_footer .footer .copyrighttext {
+    display: block;
+    width: auto;
+  }
+
+  .btn-theme-wrap {
+    z-index: 11;
+  }
+  .wrapper[device="mobile"] #split-0,
+  .wrapper[device="mobile"] #split-1 {
+    height: 100% !important;
+    max-height: 100%;
+    float: left;
+    overflow: auto;
+  }
+  .col-sm-12 {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  #split-0,
+  #split-1 {
+    min-height: 100px;
+    height: 100% !important;
+    max-height: 100%;
+    float: left;
+    overflow: auto;
+  }
+
+  .btn-theme-wrap {
+    z-index: 11;
+  }
+}
+
+@media screen and (orientation: landscape) and (min-device-width: 380px)and (max-device-width: 990px) and (max-device-height: 990px) {
+  .titledesktop {
+    display: none !important;
+  }
+  .titlemobile {
+    display: block !important;
+    font-size: 36px;
+    padding-top: 1rem;
+  }
+  .launch .exp_header .title {
+    padding: 0.2em 0.5em 0em 0.5em;
+  }
+  .launch .exp_header .sub-title {
+    margin-bottom: 0.5em;
+  }
+  .launch .exp_header img.logo {
+    width: 160px;
+  }
+  /*.wrapper {
+    min-height: auto;
+    max-height: 100%;
+  }*/
+  #split-0,
+  #split-1 {
+    height: 100% !important;
+    max-height: 100%;
+    float: left;
+    overflow: auto;
+  }
+  .btn-theme-wrap {
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    right: auto;
+    z-index: 3;
+  }
+  .instruction_cont {
+    padding: 5px 10px !important;
+    font-size: 14px !important;
+  }
+
+  .quiz_cont {
+    padding: 0px 10px !important;
+    /* top: unset !important;
+    left: unset !important;
+    transform: unset !important; */
+  }
+  .quiz_cont_inner {
+    height: 240px !important;
+  }
+  .config_cont {
+    margin-bottom: 30px !important;
+    font-size: 14px !important;
+  }
+  .config_cont input {
+    width: 55px !important;
+  }
+
+  .config_cont input {
+    text-align: center;
+    width: 100px;
+    /*outline: none;
+    color: inherit;*/
+    margin: 1px 2px;
+  }
+  .ques_cont {
+    width: 100%;
+    height: 80px !important;
+    position: relative;
+  }
+  .ques_content {
+    width: 60% !important;
+    font-size: 13px !important;
+    padding: 8px 5px !important;
+    height: 77px !important;
+  }
+  .qtn_txt {
+    font-size: 18px !important;
+  }
+  .ans_content {
+    width: 40% !important;
+    padding: 20px 5px !important;
+    height: 77px !important;
+  }
+  .numbInput_label {
+    font-size: 18px !important;
+  }
+  #numbInput_txt {
+    /*width: 80% !important;*/
+    font-size: 18px !important;
+  }
+
+  .correctAnswer_txt {
+    margin-top: 0px !important;
+    font-size: 14px !important;
+  }
+
+  .birdsExplain_txt div {
+    font-size: 14px !important;
+  }
+
+  #set_mc {
+    padding: 0px 30px 0px 30px;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    min-height: 500px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: max-content;
+    /*top: 0% !important;
+    left: 50% !important;
+    transform: translate(-50%, 10%) !important;*/
+    margin: auto;
+  }
+  .birds_set_mc_txt {
+    width: 270px !important;
+    font-size: 12px !important;
+    padding: 13px 10px 5px 50px !important;
+  }
+  .btn_themes {
+    background-image: url(../images/theme-icon-outline-left.svg);
+    background-repeat: no-repeat;
+    background-size: 86px 44px;
+    background-position: -44px 0px;
+  }
+  /* .exp_body_content{
+        height: 100% !important;
+    } */
+  .container-so.main .exp_header {
+    display: none;
+  }
+
+  .container-so.main .exp_footer .footer {
+     justify-content: right !important;
+  }
+  .container-so.main .exp_body_footer,
+  .container-so.main .exp_body_header {
+    display: none;
+  }
+  .container-so.main .exp_footer .footer .copyrighttext {
+    display: none;
+  }
+  .birdsExplain{
+    font-size: 14px;
+  }
+  .footer-menu-container{
+    width: 100%;
+  }
+  .footer-menu-container div.btn-wrap{
+    float: right;
+  }
+  .Explain_mc_birdrow{
+    padding-top: 0px !important;
+  }
+  .Explain_mc_birdrow .colbird {
+    padding: 10px !important;
+    min-width: auto !important;
+    max-width: auto !important;
+    font-size: 12px;
+  }
+  .birdsExplain_div{
+    height: 80px !important;
+  }
+  #explain_mc .birdsAnswer_container{
+    padding-top: 10px !important;
+  }
+  .btn_skip_gt{
+    right: 20px !important;
+    top: 20px !important;
+    left: auto !important;
+  }
+
+}
+
+@media screen and (orientation: portrait) and (max-device-height: 960px) {
+  /*BOB Style*/
+
+  /*END BOB Style*/
+  .wrapper[device="tablet"]
+    .container-so.main
+    .exp_header
+    .header
+    .head-pan-container {
+    font-size: 15px;
+  }
+  .wrapper[device="tablet"]
+    .container-so.main
+    .exp_header
+    .header
+    .main-src-logo {
+    width: 64px;
+    margin: 0em 0.5em;
+  }
+}
+@media screen and (orientation: portrait) and (max-device-width: 660px) {
+  /*BOB Style*/
+
+  /*END BOB Style*/
+  .wrapper[device="tablet"]
+    .container-so.main
+    .exp_header
+    .header
+    .head-pan-container {
+    font-size: 15px;
+  }
+  .wrapper[device="tablet"]
+    .container-so.main
+    .exp_header
+    .header
+    .main-src-logo {
+    width: 64px;
+    margin: 0em 0.5em;
+  }
+  .birdsExplain{
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .quiz_cont_inner{
+    margin-top: 100px;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-device-height: 610px) {
+  .launch .exp_header .title{
+    padding: 0.5em 0.5em 0.1em 0.5em !important;
+  }
+  /*
+  --Appa android landscape
+  .btn_skip_gt{
+    right: 20px !important;
+    top: 20px !important;
+    left: auto !important;
+  }*/
+}
