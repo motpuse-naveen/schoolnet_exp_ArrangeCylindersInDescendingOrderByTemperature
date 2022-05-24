@@ -25,59 +25,92 @@ var ScreenSplitter = (function () {
     </div>`;
 
     return {
-        InitSplitter: function () {
+        InitSplitter: function (p_sizes, whenresize) {
             $("#split-main").removeClass("v-split-main").removeClass("h-split-main");
             $("#split-main").removeAttr("style")
-            if (window.matchMedia("(orientation: portrait)").matches) {
-                $("#split-main").addClass("v-split-main");
-                this.VerticalSplit();
+            if(whenresize!=undefined && whenresize!=null && whenresize==true){
+                if(window.screen.availWidth<730){
+                    $("#split-main").addClass("v-split-main");
+                    this.VerticalSplit();
+                }
+                else{
+                    //$("#split-main").addClass("h-split-main");
+                    //this.HorizontalSplit();
+                    $("#split-main").addClass("v-split-main");
+                    this.VerticalSplit();
+                }
             }
-            else {
-                $("#split-main").addClass("h-split-main");
-                this.HorizontalSplit();
+            else{
+                if (window.matchMedia("(orientation: portrait)").matches) {
+                    $("#split-main").addClass("v-split-main");
+                    this.VerticalSplit(p_sizes);
+                }
+                else {
+                    //$("#split-main").addClass("h-split-main");
+                    //this.HorizontalSplit(p_sizes);
+                    $("#split-main").addClass("v-split-main");
+                    this.VerticalSplit(p_sizes);
+                }
             }
             //NM: Specific to SpringOscillation.
-            var sprcontht = $(".spingContainer").height();
-            $(".spingContainer").css({"height":sprcontht + "px"});
-            $(".gutter").css("pointer-events", "none");
+            //var sprcontht = $(".content-container.mc").height();
+            //$(".spingContainer").css({"height":sprcontht + "px"})
+            //$(".content-container.mc").css({"height":sprcontht + "px"})
         },
-        HorizontalSplit: function () {
+        HorizontalSplit: function (p_sizes) {
+            var loc_sizes = [48, 52]
+            if(p_sizes!=null && p_sizes!=undefined && p_sizes.length>1){
+                loc_sizes = p_sizes;
+            }
             $(".gutter").remove();
             $("#split-0").removeAttr("style");
             $("#split-1").removeAttr("style");
             split_instance = Split(['#split-0', '#split-1'], {
                 minSize: 200,
-                sizes: [48, 52],
+                sizes: loc_sizes,
                 gutterSize: 1,
                 onDrag: function (sizes) {
+                    //debugger;
                     /* Scale Spring to fit */
-                    ScreenSplitter.ScaleToFit($("#split-0"));
+                    ScreenSplitter.ScaleToFit($("#split-0"), null, 0, 0, "hsplit")
                     /* Scale Graph to fit */
-                    ScreenSplitter.ScaleToFit($("#split-1"));
+                    ScreenSplitter.ScaleToFit($("#split-1"), null, 0, 0, "hsplit")
                 },
-            });
-            // $(".gutter").append(horizontalHandle);
+                onDragEnd: function(sizes){
+                    $("#split-0").attr("size",sizes[0]);
+                    $("#split-1").attr("size",sizes[1])
+                }
+            })
+            $(".gutter").append(horizontalHandle)
         },
-        VerticalSplit: function () {
+        VerticalSplit: function (p_sizes) {
+            var loc_sizes = [70, 30]
+            if(p_sizes!=null && p_sizes!=undefined && p_sizes.length>1){
+                loc_sizes = p_sizes;
+            }
             $(".gutter").remove();
             $("#split-0").removeAttr("style");
             $("#split-1").removeAttr("style");
             split_instance = Split(['#split-0', '#split-1'], {
-                sizes: [60, 40],
+                sizes: loc_sizes,
                 direction: 'vertical',
                 gutterSize: 1,
                 onDrag: function (sizes) {
                     /* Scale Spring to fit */
-                    ScreenSplitter.ScaleToFit($("#split-0"));
+                    ScreenSplitter.ScaleToFit($("#split-0"), null, 0, 0, "vsplit")
                     /* Scale Graph to fit */
-                    ScreenSplitter.ScaleToFit($("#split-1"));
+                    ScreenSplitter.ScaleToFit($("#split-1"), null, 0, 0, "vsplit")
                 },
-            });
-            // $(".gutter").append(verticalHandle);
+                onDragEnd: function(sizes){
+                    $("#split-0").attr("size",sizes[0]);
+                    $("#split-1").attr("size",sizes[1])
+                }
+            })
+            $(".gutter").append(verticalHandle)
         },
-        ScaleToFit: function ($wrapper,$element, deltaWidth, deltaHeight) {
+        ScaleToFit: function ($wrapper,$element, deltaWidth, deltaHeight, splittype) {
             if($element==null || $element == undefined){
-                $element = $wrapper.find(".content-container");
+                $element = $wrapper.find(".content-container")
             }
             if(deltaWidth==null || deltaWidth == undefined){
                 deltaWidth = 0;
@@ -93,28 +126,76 @@ var ScreenSplitter = (function () {
             var elmSize = {
                 width: $element.outerWidth() + deltaWidth,
                 height: $element.outerHeight() + deltaHeight
-            };
+            }
             var scale;
             var wrapperSize = {
                 width: $wrapper.width(),
                 height: $wrapper.height()
-            };
+            }
             scale = Math.min(
                 wrapperSize.width/elmSize.width,
                 wrapperSize.height/elmSize.height
             );
+            //debugger;
+            /*$element.css({
+                transform: "scale(" + scale + ")"
+            });*/
+            var setOrigin = false;
+            if((wrapperSize.width/elmSize.width) < (wrapperSize.height/elmSize.height)){
+                console.log(wrapperSize.width-elmSize.width*scale)
+            }
             if (scale < 1) {
-                $element.css({
-                    transform: "scale(" + scale + ")"
-                });
+                var transOrigin = "top center"
+                if(splittype == "hsplit"){
+                   
+                    transOrigin = "top left";
+                    $element.css({
+                        "transform": "scale(" + scale + ")",
+                        "transform-origin": transOrigin
+                    });
+                    var leftmargin = ($wrapper.width() - ($element.outerWidth() * scale))/2;
+                    $element.css({"margin-left": leftmargin + "px"});
+                }
+                else{
+                    $element.css({
+                        "transform": "scale(" + scale + ")",
+                        "transform-origin": transOrigin,
+                        "margin":"0px auto"
+                    });
+                }
             }
             else{
-                scale = 1;
                 $element.css({
-                    "transform": "scale(" + scale + ")"
+                    "transform": "scale(" + scale + ")",
+                    "transform-origin": "top center",
+                    "margin":"0px auto"
                 });
             }
-            $element.attr("scale",scale);
+            $element.addClass("split-scaled").attr("scale",scale);
+        },
+        ResetSplit: function(){
+            $(".split-scaled").removeAttr("scale").removeAttr("style").removeClass("split-scaled");
+            this.InitSplitter();
+            /* Scale Spring to fit */
+            ScreenSplitter.ScaleToFit($("#split-0"));
+            /* Scale Graph to fit */
+            ScreenSplitter.ScaleToFit($("#split-1"));
+        },
+        ResetSplitOnPinchZoom: function(){
+            var attr_sizes = []
+            var splitPanel1Size = $("#split-0").attr("size");
+            var splitPanel2Size = $("#split-1").attr("size");
+            if(splitPanel1Size!=undefined && splitPanel1Size !="" && splitPanel2Size !=undefined && splitPanel2Size != ""){
+                attr_sizes = [
+                    Number(splitPanel1Size),
+                    Number(splitPanel2Size)
+                ]
+                //alert(attr_sizes)
+                this.InitSplitter(attr_sizes);
+            }
+            else{
+                this.InitSplitter();
+            }
         }
-    };
+    }
 })();

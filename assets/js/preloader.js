@@ -2,31 +2,25 @@
 var imagePreCount = 0;
 var audioPreCount = 0;
 var imgPreloadArray = new Array(
-  "assets/images/birds/eagle.svg",
-  "assets/images/birds/hornbill.svg",
-  "assets/images/birds/owl.svg",
-  "assets/images/birds/parrot.svg",
-  "assets/images/birds/pelican.svg",
-  "assets/images/birds/pigeon.svg",
-  "assets/images/birds/robin.svg",
-  "assets/images/birds/sparrow.svg",
-  "assets/images/birds/swan.svg",
-  "assets/images/birds/woodpecker.svg",
-  "assets/images/arrow-left-bottom.png",
-  "assets/images/arrow-left-top.png",
-  "assets/images/arrow-right-bottom.png",
-  "assets/images/arrow-right-top.png",
-  "assets/images/check-icn.svg",
-  "assets/images/drag-btn-horizontal.svg",
-  "assets/images/drag-btn-vertical.svg",
   "assets/images/logo.svg",
-  "assets/images/next-arrow.svg",
+  "assets/images/exploriment-Logo.svg",
   "assets/images/phone-landscape-pngrepo-com.png",
   "assets/images/phone-portrait-pngrepo-com.png",
   "assets/images/texture.svg",
   "assets/images/theme-icon-outline-left.svg",
   "assets/images/theme-icon-outline-right.svg",
   "assets/images/watermark-2.png",
+  "assets/images/W_01.svg",
+  "assets/images/W_02.svg",
+  "assets/images/W_03.svg",
+  "assets/images/W_04.svg",
+  "assets/images/W_05.svg",
+  "assets/images/W_06.svg",
+  "assets/images/Top_BG.png",
+  "assets/images/Top_BG.svg",
+  "assets/images/writing_pad.svg",
+  "assets/images/thermometer.svg",
+  "assets/images/Cylinder_Base.svg"
 );
 
 /*--Audio--*/

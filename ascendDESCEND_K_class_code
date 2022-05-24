@@ -29,8 +29,6 @@ onUnload = function() {
 		myMCEffects.disposeMCEffects()
 		mObj.myMCEffects = null
 	}
-
-	
 }
 
 
@@ -305,8 +303,6 @@ function speedAnswer() {
 	mFlag = false	
 	while (!mFlag) {
 		mFlag = true
-		
-		
 		for (var i:Number = 0; i < bodyArray.length; i++) {
 			if (Number(bodyArray[i].tag) < Number(bodyArray[i+1].tag)) {
 				mTempBody = bodyArray[i]
@@ -356,8 +352,7 @@ function redrawBodies() {
 			bodyArray[i]._y = hitArea_mc._y + hitArea_mc._height - bodyArray[i]._height
 			bodyArray[i]._x = xVal
 			xVal = xVal + bodyArray[i]._width + 30 
-		}
-				
+		}		
 	}
 }
 			
@@ -368,7 +363,6 @@ thermometer_mc.beforeDragDropStarts = function() {
 		this.attachFixedTempMC(null, 25)
 	}
 	this.swapDepths(this._parent.getNextHighestDepth() )
-
 }
 
 	
