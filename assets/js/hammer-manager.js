@@ -101,8 +101,9 @@ function hammerItScrollableContent(elm, p_maxScale) {
     if (typeof p_maxScale == 'undefined')
         p_maxScale = 4
 
-    hammertime_scroll.on('doubletap panend pinchstart pinch pinchend', function (ev) {
+    hammertime_scroll.on('doubletap pinchstart pinch pinchend', function (ev) {
         /*if (ev.type == "doubletap") {
+            console.log("111")
             transform =
                 "translate3d(0,0,0) " +
                 "scale3d(2, 2, 1)";

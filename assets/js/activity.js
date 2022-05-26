@@ -18,9 +18,9 @@ var ActivityMain = (function () {
             this.BindJQueryUIMethods();
         },
         ResetActivity: function () {
-            var orgtop = $(".thermometer").data('orgTop');
-            var orgleft = $(".thermometer").data('orgLeft');
-            $(".thermometer").css({
+            var orgtop = $(".thermometerDragger").data('orgTop');
+            var orgleft = $(".thermometerDragger").data('orgLeft');
+            $(".thermometerDragger").css({
                 "left": orgleft,
                 "top": orgtop
             })
@@ -36,11 +36,25 @@ var ActivityMain = (function () {
         },
         BindJQueryUIMethods: function () {
             //Bind Sortable
-            $("#cylinder-list").sortable()
+            $("#cylinder-list").sortable({
+                start: function( event, ui ) {
+                    $(".contWraper").removeAttr("style");
+                    $(".contWraper").removeAttr("pz-scale")
+                    ScreenSplitter.ResetSplit();
+                    var orgtop = $(".thermometerDragger").data('orgTop');
+                    var orgleft = $(".thermometerDragger").data('orgLeft');
+                    $(".thermometerDragger").css({
+                        "left": orgleft,
+                        "top": orgtop
+                    })
+                    ActivityMain.InitReadingCounter(Number($(".thermoreading").text()), 25, Number($(".thermoreading").text()));
+                    
+                }
+              })
                 .disableSelection();
 
             //Bind Draggable
-            $(".thermometer").draggable({
+            $(".thermometerDragger").draggable({
                 //revert: "invalid",
                 revert: function (event, ui) {
                     $(this).data("uiDraggable").originalPosition = {
@@ -52,6 +66,11 @@ var ActivityMain = (function () {
                         ActivityMain.InitReadingCounter(Number($(".thermoreading").text()), 25, Number($(".thermoreading").text()));
                     }*/
                     return !event;
+                },
+                start: function(event,ui){
+                    $(".contWraper").removeAttr("style");
+                    $(".contWraper").removeAttr("pz-scale")
+                    ScreenSplitter.ResetSplit();
                 }
             }).each(function () {
                 var top = $(this).position().top;
@@ -62,7 +81,7 @@ var ActivityMain = (function () {
 
             //Bind Droppable
             $("li.cylinder .item").droppable({
-                accept: ".thermometer",
+                accept: ".thermometerDragger",
                 tolerance: "touch",
                 drop: function (event, ui) {
                     var t_to = $(event.target).closest("li.cylinder").attr("temperature")
@@ -93,7 +112,7 @@ var ActivityMain = (function () {
             }
             TemperatureArray.sort((a, b) => a.temperature - b.temperature);
             TemperatureArray.reverse();
-            console.log(TemperatureArray);
+            //console.log(TemperatureArray);
         },
         Shuffle: function (array) {
             let currentIndex = array.length, randomIndex;
@@ -119,23 +138,23 @@ var ActivityMain = (function () {
                 AnnimateDecreaseInReading();
             }
         },
-        SubmitActivity: function(){
+        SubmitActivity: function () {
             var result = []
-            $("#cylinder-list li.cylinder").each(function( index ) {
+            $("#cylinder-list li.cylinder").each(function (index) {
                 //console.log( index + ": " + $( this ).text() );
-                result.push({"label": $(this).attr("datalabel"),"temperature": Number($(this).attr("temperature"))})
+                result.push({ "label": $(this).attr("datalabel"), "temperature": Number($(this).attr("temperature")) })
             });
             console.log(result)
-            if(JSON.stringify(result)==JSON.stringify(TemperatureArray)){
+            if (JSON.stringify(result) == JSON.stringify(TemperatureArray)) {
                 $(".wrong_mc").hide();
                 $(".correct_mc").show();
             }
-            else{
+            else {
                 $(".wrong_mc").show();
                 $(".correct_mc").hide();
             }
         },
-        AnswerActivity: function(){
+        AnswerActivity: function () {
 
         }
     };
@@ -186,7 +205,15 @@ function DisplayTemperatureBar(currPerc) {
 }
 
 $(document).on("click", "#btn_reset", function (event) {
+    $(".contWraper").removeAttr("style");
+                    $(".contWraper").removeAttr("pz-scale")
+    ScreenSplitter.ResetSplit();
     ActivityMain.ResetActivity();
+    $("#btn_ok").show();
+    $("#btn_answer").show();
+    $("#btn_speed").hide();
+    speedAnswerActive = false;
+    CancelledAnswerAction = false;
 });
 $(document).on("click", "#btn_ok", function (event) {
     ActivityMain.SubmitActivity();
@@ -194,88 +221,73 @@ $(document).on("click", "#btn_ok", function (event) {
 $(document).on("click", "#btn_answer", function (event) {
     ActivityMain.AnswerActivity();
     bubbleSort();
+    $("#btn_ok").hide();
+    $("#btn_answer").hide();
+    $("#btn_speed").show();
+});
+$(document).on("click", "#btn_speed", function (event) {
+    speedAnswerActive = true
+    setInterval(function(){
+        if(CancelledAnswerAction){
+            bubbleSortSpeed();
+        }
+    },100)
+    $("#btn_speed").hide();
 });
 
-
-
 const container = document.querySelector(".cylinder-list");
-/*
-function generateBlocks(num = 20) {
-  if (num && typeof num !== "number") {
-    alert("First argument must be a typeof Number");
-    return;
-  }
-  for (let i = 0; i < num; i += 1) {
-    const value = Math.floor(Math.random() * 100);
-
-    const block = document.createElement("div");
-    block.classList.add("block");
-    block.style.height = `${value * 3}px`;
-    block.style.transform = `translateX(${i * 30}px)`;
-
-    const blockLabel = document.createElement("label");
-    blockLabel.classList.add("block__id");
-    blockLabel.innerHTML = value;
-
-    block.appendChild(blockLabel);
-    container.appendChild(block);
-  }
-}
-*/
 function swap(el1, el2) {
-  return new Promise(resolve => {
-    //const style1 = window.getComputedStyle(el1);
-    //const style2 = window.getComputedStyle(el2);
-
-    //const transform1 = style1.getPropertyValue("transform");
-    //const transform2 = style2.getPropertyValue("transform");
-
-    //el1.style.transform = transform2;
-    //el2.style.transform = transform1;
-
-    // Wait for the transition to end!
-    window.requestAnimationFrame(function() {
-      setTimeout(() => {
-        container.insertBefore(el2, el1);
-        resolve();
-      }, 250);
+    return new Promise(resolve => {
+        // Wait for the transition to end!
+        window.requestAnimationFrame(function () {
+            setTimeout(() => {
+                container.insertBefore(el2, el1);
+                resolve();
+            }, 250);
+        });
     });
-  });
 }
 
 async function bubbleSort(delay = 100) {
-  if (delay && typeof delay !== "number") {
-    alert("sort: First argument must be a typeof Number");
-    return;
-  }
-  let blocks = document.querySelectorAll(".cylinder");
-  for (let i = 0; i < blocks.length - 1; i += 1) {
-    for (let j = 0; j < blocks.length - i - 1; j += 1) {
-      //blocks[j].style.backgroundColor = "#FF4949";
-      //blocks[j + 1].style.backgroundColor = "#FF4949";
+    let blocks = document.querySelectorAll(".cylinder");
+    for (let i = 0; i < blocks.length - 1; i += 1) {
+        for (let j = 0; j < blocks.length - i - 1; j += 1) {
+            if (speedAnswerActive){
+                CancelledAnswerAction = true
+                return;
+            } 
+            await new Promise(resolve =>
+                setTimeout(() => {
+                    resolve();
+                }, delay)
+            );
+            const value1 = Number(blocks[j].getAttribute('temperature'));
+            const value2 = Number(blocks[j + 1].getAttribute('temperature'));
 
-      await new Promise(resolve =>
-        setTimeout(() => {
-          resolve();
-        }, delay)
-      );
-
-      const value1 = Number(blocks[j].getAttribute('temperature'));
-      const value2 = Number(blocks[j + 1].getAttribute('temperature'));
-
-      if (value2 > value1) {
-        await swap(blocks[j], blocks[j + 1]);
-        blocks = document.querySelectorAll(".cylinder");
-      }
-
-      //blocks[j].style.backgroundColor = "#58B7FF";
-      //blocks[j + 1].style.backgroundColor = "#58B7FF";
+            if (value2 > value1) {
+                await swap(blocks[j], blocks[j + 1]);
+                blocks = document.querySelectorAll(".cylinder");
+            }
+        }
     }
-
-    //blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
-  }
 }
 
-//generateBlocks();
-//bubbleSort();
+var speedAnswerActive = false;
+var CancelledAnswerAction = false;
+function swapSpeed(el1, el2) {
+    container.insertBefore(el2, el1);
+}
+async function bubbleSortSpeed(delay = 100) {
+    let blocks = document.querySelectorAll(".cylinder");
+    for (let i = 0; i < blocks.length - 1; i += 1) {
+        for (let j = 0; j < blocks.length - i - 1; j += 1) {
+            const value1 = Number(blocks[j].getAttribute('temperature'));
+            const value2 = Number(blocks[j + 1].getAttribute('temperature'));
+            if (value2 > value1) {
+                swapSpeed(blocks[j], blocks[j + 1]);
+                blocks = document.querySelectorAll(".cylinder");
+            }
+        }
+    }
+}
 

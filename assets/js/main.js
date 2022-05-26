@@ -36,7 +36,7 @@ var ActivityShell = (function () {
     },
     LaunchActivity: function () {
       $(".wrapper").addClass("activity");
-      var deviceType = ActivityShell.DeviceType();
+      /*var deviceType = ActivityShell.DeviceType();
       var Android = /(android)/i.test(navigator.userAgent);
       if (deviceType == "mobile" && Android) {
         openFullscreen()
@@ -49,11 +49,8 @@ var ActivityShell = (function () {
           ScreenSplitter.InitSplitter();
           GuidedTour.Init();
           ActivityMain.LaunchActivity();
-          /* Scale Spring to fit */
           ScreenSplitter.ScaleToFit($("#split-0"));
-          /* Scale Graph to fit */
           ScreenSplitter.ScaleToFit($("#split-1"));
-
           if (zoom1 == null) {
             hammerItScrollableContent(document.querySelector(".zoom1"));
             zoom1 = "zoom1";
@@ -65,6 +62,7 @@ var ActivityShell = (function () {
         }, 1000)
       }
       else {
+        */
         $(".container-so.launch").fadeOut();
         $(".container-so.main").show();
         this.AdjustContainerHeight();
@@ -84,7 +82,7 @@ var ActivityShell = (function () {
           hammerItScrollableContent(document.querySelector(".zoom2"));
           zoom2 = "zoom2";
         }
-      }
+      /*}*/
     },
     AdjustContainerHeight: function () {
       var deviceType = ActivityShell.DeviceType();

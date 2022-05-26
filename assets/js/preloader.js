@@ -20,7 +20,22 @@ var imgPreloadArray = new Array(
   "assets/images/Top_BG.svg",
   "assets/images/writing_pad.svg",
   "assets/images/thermometer.svg",
-  "assets/images/Cylinder_Base.svg"
+  "assets/images/Cylinder_Base.svg",
+  "assets/images/screen1.png",
+  "assets/images/screen2.png",
+  "assets/images/screen3.png",
+  "assets/images/screen4.png",
+  "assets/images/screen5.png",
+  "assets/images/screen6.png",
+  "assets/images/screen7.png",
+  "assets/images/screen8.png",
+  "assets/images/screen9.png",
+  "assets/images/scratchpad1.png",
+  "assets/images/scratchpad2.png",
+  "assets/images/scratchpad3.png",
+  "assets/images/Arrow_01_1.png",
+  "assets/images/Arrow_02.png",
+  "assets/images/Arrow_03.png",
 );
 
 /*--Audio--*/

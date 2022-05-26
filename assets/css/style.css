@@ -407,7 +407,7 @@ div.closepopup {
 }
 .procBox {
   position: relative;
-  padding-left: 35px;
+  padding-left: 40px;
   float: left;
 }
 .procstepno {
@@ -568,6 +568,6 @@ svg .cls-101{fill:none;stroke:var(--theme-pri-text-color);stroke-linecap:round;s
 #split-main{
   overflow:auto;
 }
-.zoom1{
+.zoom1, .zoom2{
   transform-origin: left top;
 }

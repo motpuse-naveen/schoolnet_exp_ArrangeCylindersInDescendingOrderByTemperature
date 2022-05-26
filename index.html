@@ -79,59 +79,68 @@
           <div id="split-main" class="split ">
             <div id="split-0">
               <div class="contWraper zoom1">
-                <div class="activityText">
-                  <div class="otherdevice">
-                    <p>Arrange the cylinders given below in the descending order of temperature. To do so, you need to
-                      drag and drop the block in the right place.</p>
-                  </div>
-                  <div class="mobiledevice less">
+                <div class="content-container">
+                  <div class="activityText">
+                    <div class="otherdevice">
+                      <p>Arrange the cylinders given below in the descending order of temperature. To do so, you need to
+                        drag and drop the block in the right place.</p>
+                    </div>
+                    <!--<div class="mobiledevice less">
                     <p>Arrange the cylinders given below in the descending order ...<a
                         class="linkactivityTextMore">More</a></p>
                   </div>
                   <div class="mobiledevice more">
                     <p>Arrange the cylinders given below in the descending order of temperature. To do so, you need to
                       drag and drop the block in the right place. <a class="linkactivityTextLess">Less</a></p>
+                  </div>-->
                   </div>
-                </div>
-                <div class="cylinderWrapper">
-                  <div class="cylinderContainer">
-                    <div class="thermometer">
-                      <img class="thermo" src="assets/images/thermometer_without_no.svg" />
-                      <div class="thermoscale">
-                        <div class="thermored"></div>
-                        <div class="thermoredbottom"></div>
-                        <span class="number">100</span>
-                        <span class="number">90</span>
-                        <span class="number">80</span>
-                        <span class="number">70</span>
-                        <span class="number">60</span>
-                        <span class="number">50</span>
-                        <span class="number">40</span>
-                        <span class="number">30</span>
-                        <span class="number">20</span>
-                        <span class="number">10</span>
-                        <span class="number">00</span>
+                  <div class="cylinderWrapper">
+                    <div class="cylinderContainer">
+                      <div class="thermometerDragger">
+                        <div class="thermometer">
+                          <img class="thermo" src="assets/images/thermometer_without_no.svg" />
+                          <div class="thermoscale">
+                            <div class="thermored"></div>
+                            <div class="thermoredbottom"></div>
+                            <span class="number">100</span>
+                            <span class="number">90</span>
+                            <span class="number">80</span>
+                            <span class="number">70</span>
+                            <span class="number">60</span>
+                            <span class="number">50</span>
+                            <span class="number">40</span>
+                            <span class="number">30</span>
+                            <span class="number">20</span>
+                            <span class="number">10</span>
+                            <span class="number">00</span>
+                          </div>
+                          <div class="thermotext">
+                            <span class="thermotext_arrow"></span>
+                            <span class="thermotext_input"><span class="thermoreading">25</span>&deg;C</span>
+                          </div>
+                        </div>
                       </div>
-                      <div class="thermotext">
-                        <span class="thermotext_arrow"></span>
-                        <span class="thermotext_input"><span class="thermoreading">25</span>&deg;C</span>
-                      </div>
-                    </div>
-                    <div class="woodbase">
-                      <ul id="cylinder-list" class="cylinder-list">
-                      </ul>
-                      <div class="orderindicator">
-                        <table>
-                          <tr>
-                            <td class="td1"><div></div></td>
-                            <td class="td2">Descending Order</td>
-                            <td class="td3"><div><div class="arrow"><img src="assets/images/arrow-right-40.svg"/></span></div></td>
-                          </tr>
-                        </table>
-                      </div>
-                      <div class="markWrapper">
-                        <div class="wrong_mc">&#10006;</div>
-                        <div class="correct_mc">&#10004;</div>
+                      <div class="woodbase">
+                        <ul id="cylinder-list" class="cylinder-list">
+                        </ul>
+                        <div class="orderindicator">
+                          <table>
+                            <tr>
+                              <td class="td1">
+                                <div></div>
+                              </td>
+                              <td class="td2">Descending Order</td>
+                              <td class="td3">
+                                <div>
+                                  <div class="arrow"><img src="assets/images/arrow-right-40.svg" /></span></div>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="markWrapper">
+                          <div class="wrong_mc">&#10006;</div>
+                          <div class="correct_mc">&#10004;</div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -139,9 +148,8 @@
               </div>
             </div>
             <div id="split-1">
-              
               <div class="contWraper zoom2">
-                <div class="scratchPadContainer">
+                <div class="scratchPadContainer content-container">
                   <textarea class="editableTextPad"></textarea>
                   <img src="assets/images/edit.svg" class="editicon" />
                 </div>
@@ -173,169 +181,183 @@
                   <!--<p class="bold">Speed v/s Velocity</p>-->
                   <p>
                     At the left, there are metal cylinders of various sizes. You have to arrange them in
-                    <b>descending</b> order of their TEMPERATURE.
+                    <b class="bold">descending</b> order of their TEMPERATURE.
                   </p>
                   <p>
                     To find the temperature, drag and hold the thermometer over the cylinder.
                   </p>
-                  <div class="instr-cylinder-container"></div>
+                  <div class="instr-cylinder-container" style="text-align: center;">
+                    <img src="assets/images/screen1.png" style="width:100%;max-width: 230px;" />
+                  </div>
+                  <p></p>
                   <p>
                     To re-arrange the order of cylinders, just drag cylinder from it's current position and drop it in
                     the desired position.
                   </p>
-                  <p><b>Press the Ok button when you are finished.</b></p>
+                  <p>Press the <b class="bold">Ok</b> button when you are finished.</p>
                 </div>
-                <hr />
                 <div class="procBox container">
                   <span class="procstepno bold">2.</span>
                   <p>
                     To help you, you are given two objects -
                   </p>
-                  <h2>Thermometer</h2>
+                  <h2 style="padding-top: 0px;">Thermometer</h2>
                   <div style="text-align: center;" class="instr-thermometer-wrapper">
-                    <img />
+                    <img src="assets/images/screen2.png" style="height:200px" />
                   </div>
-                  <p>&nbsp;</p>
                   <h2>A Scratch Pad</h2>
                   <div style="text-align: center;" class="instr-scratchpad-wrapper">
-                    <img />
+                    <img src="assets/images/scratchpad1.png" style="width:100%; border: 1px solid #333;max-width: 230px;" />
                   </div>
-                  <p>&nbsp;</p>
+                  <p></p>
                 </div>
                 <hr />
                 <div class="procBox container">
                   <span class="procstepno bold">3.</span>
                   <p>Suppose you start with the Cylinder D. Drag and hold the thermometer over it, to measure
                     temperature.</p>
-                  <div class="instrSpeedVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph1.png"
-                      style="width: 300px;border: 1px solid #999; max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/screen3.png" style="width:100%;max-width: 230px;">
                   </div>
+                  <p></p>
                   <p>Now note its temperature (63 in case of this example)</p>
                 </div>
                 <hr />
                 <div class="procBox container">
                   <span class="procstepno bold">4.</span>
                   <p>You can use the scratch pad, to enter your reading, like this -</p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/scratchpad2.png" style="width: 100%;border:1px solid #333;max-width: 230px;">
                   </div>
-                  <p>&nbsp;</p>
+                  <p></p>
                   <p>To write on the Scratch Pad, set the cursor on the scratch pad, and begin typing.</p>
                   <p>There is no perticular format to enter information on the Scratch Pad. Write in a way you will
                     understand.</p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">5.</span>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/scratchpad2.png" style="width: 100%;border:1px solid #333;max-width: 230px;">
                   </div>
+                  <p></p>
                   <p>Remember, the scratch pad is just a convenience given to you. You need not use it at all if you so
                     choose. Instead, you can use your memory to remember the temperature readings, or simply use a paper
                     and pencil to record your observations.</p>
-                  <p>&nbsp;</p>
+                  <p></p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">6.</span>
                   <p>After measuring the temperatures of all the cylinders, your Scratch Pad may look like this - </p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/scratchpad3.png" style="width: 100%;border:1px solid #333;max-width: 230px;">
                   </div>
+                  <p></p>
                   <p>Depending upon your readings, you may have to move a cylinder to another position, like this - </p>
-                  <p>&nbsp;</p>
+                  <div style="text-align: center;">
+                    <img src="assets/images/Arrow_01_1.png" style="width: 130px;">
+                    <img src="assets/images/screen1.png" style="width:100%; max-width: 230px;" />
+                  </div>
+                  <p></p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">7.</span>
                   <p>To change the position of the cylinder, you need to first drag it out from its existing position...
                   </p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;position: relative;">
+                    <img src="assets/images/Arrow_02.png" style="width: 62px;
+                    position: absolute;
+                    right: 28px;
+                    bottom: 18px;">
+                    <img src="assets/images/screen4.png" style="width:100%;max-width: 230px;" />
                   </div>
-                  <p>&nbsp;</p>
+                  <p></p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">8.</span>
                   <p>... and drop it at the desired position.</p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/screen5.png" style="width:100%;max-width: 230px;" />
                   </div>
+                  <p></p>
                   <p>This is how the re-arranged cylinders will look now - </p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/screen6.png" style="width:100%;max-width: 230px;" />
                   </div>
-                  <p>&nbsp;</p>
+                  <p></p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">9.</span>
                   <p>Using a series of such moves, and looking at the Scratch Pad, you need to re-arrange the cylinders
                     in the descending order of temperature.</p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/scratchpad3.png" style="width: 100%;border:1px solid #333;max-width: 230px;">
                   </div>
+                  <p></p>
                   <p>The final answer, in case of this example, will look like this - </p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/screen7.png" style="width:100%;max-width: 230px;" />
                   </div>
-                  <p>&nbsp;</p>
+                  <p></p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">10.</span>
-
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
-                  </div>
-                  <p>Press the <b>Ok</b> button, after you have finished.</p>
                   <p>&nbsp;</p>
+                  <div style="text-align: center;">
+                    <img src="assets/images/screen8.png" style="width:228px;">
+                  </div>
+                  <p></p>
+                  <p>Press the <b class="bold">Ok</b> button, after you have finished.</p>
+                  <p></p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">11.</span>
                   <p>Once you have pressed the <b>Ok</b> button your answer will be evaluated.</p>
                   <p>You can either get it CORRECT</p>
+                  <div>
+                    <div class="correct" style="display: inline-block;">✔</div> 
+                  </div>
                   <p>or get it WRONG</p>
-                  <p>&nbsp;</p>
+                  <div>
+                    <div class="wrong" style="display: inline-block;">✖</div>
+                  </div>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">12.</span>
                   <p>If you get it CORRECT, the exercise is over, and you can start a new one by clicking the
-                    <b>Reset</b> button.
+                    <b class="bold">Reset</b> button.
                   </p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div style="text-align: center;">
+                    <img src="assets/images/screen8.png" style="width:228px;">
                   </div>
+                  <p></p>
                   <p>If you get it WRONG, you can continue to move the cylinders around and re-submit using the
-                    <b>Ok</b> button.
+                    <b class="bold">Ok</b> button.
                   </p>
-                  <p>&nbsp;</p>
+                  <p></p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">13.</span>
-                  <p>At any time, you can click the <b>Answer</b> button. This will show you the basic movements that
+                  <p>At any time, you can click the <b class="bold">Answer</b> button. This will show you the basic
+                    movements that
                     you have to do, to get the answer. </p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
-                  </div>
-                  <p>Showing the basic movements takes a bit of time. Once you have pressed the <b>Answer</b> button, a
-                    <b>Speed</b> button takes its place. Clicking it will show you the answer very fast.
+                    <div  style="text-align: center;">
+                      <img src="assets/images/screen8.png" style="width:228px;">
+                    </div>
+                    <p></p>
+                  <p>Showing the basic movements takes a bit of time. Once you have pressed the <b
+                      class="bold">Answer</b> button, a
+                    <b class="bold">Speed</b> button takes its place. Clicking it will show you the answer very fast.
                   </p>
-                  <p>&nbsp;</p>
+                  <div  style="text-align: center;">
+                    <img src="assets/images/screen9.png" style="width:150px;">
+                  </div>
+                  <p></p>
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">14.</span>
                   <p>At any time you can click the <b>Reset</b> button. This will start a new exercise for you.</p>
-                  <div class="instrVelocityVsTimeGraph" style="text-align: center;">
-                    <img src="assets/images/instr-graph2.png"
-                      style="width: 300px;border: 1px solid #999;max-width: 95%;">
+                  <div  style="text-align: center;">
+                    <img src="assets/images/screen8.png" style="width:228px;">
                   </div>
                   <p>&nbsp;</p>
                 </div>
@@ -375,6 +397,9 @@
               </button>
               <button id="btn_answer" class="btn button_style btn_answer" title="Answer">
                 Answer
+              </button>
+              <button id="btn_speed" class="btn button_style btn_speed" title="Speed" style="display:none;">
+                Speed
               </button>
               <button id="btn_reset" class="btn button_style btn_reset" title="Reset">
                 Reset
