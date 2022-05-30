@@ -138,8 +138,8 @@
                           </table>
                         </div>
                         <div class="markWrapper">
-                          <div class="wrong_mc">&#10006;</div>
-                          <div class="correct_mc">&#10004;</div>
+                          <div class="wrong_mc_wrap"><div class="wrong_mc">&#10006;</div><span>WRONG</span></div>
+                          <div class="correct_mc_wrap"><div class="correct_mc">&#10004;</div><span>CORRECT</span></div>
                         </div>
                       </div>
                     </div>
@@ -191,7 +191,7 @@
                   </div>
                   <p></p>
                   <p>
-                    To re-arrange the order of cylinders, just drag cylinder from it's current position and drop it in
+                    To re-arrange the order of cylinders, just drag the cylinder from its current position and drop it in
                     the desired position.
                   </p>
                   <p>Press the <b class="bold">Ok</b> button when you are finished.</p>
@@ -231,7 +231,7 @@
                   </div>
                   <p></p>
                   <p>To write on the Scratch Pad, set the cursor on the scratch pad, and begin typing.</p>
-                  <p>There is no perticular format to enter information on the Scratch Pad. Write in a way you will
+                  <p>There is no particular format to enter information on the Scratch Pad. Write in a way you will
                     understand.</p>
                 </div>
                 <div class="procBox container">
@@ -247,12 +247,12 @@
                 </div>
                 <div class="procBox container">
                   <span class="procstepno bold">6.</span>
-                  <p>After measuring the temperatures of all the cylinders, your Scratch Pad may look like this - </p>
+                  <p>After measuring the temperatures of all the cylinders, your scratch pad may look like this - </p>
                   <div style="text-align: center;">
                     <img src="assets/images/scratchpad3.png" style="width: 100%;border:1px solid #333;max-width: 230px;">
                   </div>
                   <p></p>
-                  <p>Depending upon your readings, you may have to move a cylinder to another position, like this - </p>
+                  <p>Depending upon your readings, you may have to move a cylinder to another position, like this- </p>
                   <div style="text-align: center;">
                     <img src="assets/images/Arrow_01_1.png" style="width: 130px;">
                     <img src="assets/images/screen1.png" style="width:100%; max-width: 230px;" />
@@ -275,12 +275,17 @@
                 <div class="procBox container">
                   <span class="procstepno bold">8.</span>
                   <p>... and drop it at the desired position.</p>
-                  <div style="text-align: center;">
+                  <div style="text-align: center;position: relative;">
+                    <img src="assets/images/Arrow_03.png" style="width: 110px;
+                    position: absolute;
+                    right: 41px;
+                    bottom: 31px;">
                     <img src="assets/images/screen5.png" style="width:100%;max-width: 230px;" />
                   </div>
                   <p></p>
                   <p>This is how the re-arranged cylinders will look now - </p>
                   <div style="text-align: center;">
+                    
                     <img src="assets/images/screen6.png" style="width:100%;max-width: 230px;" />
                   </div>
                   <p></p>
@@ -567,6 +572,7 @@
   <script src="assets/plugins/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="assets/plugins/jquery-ui-1.13.0-1.custom/jquery-ui.min.js"></script>
   <script src="assets/plugins/jquery-ui-touch/jquery.ui.touch.js"></script>
+  <script src="assets/plugins/sortablejs/Sortable.min.js"></script>
   <script src="assets/plugins/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/plugins/highchart/highcharts.js"></script>
   <script src="assets/js/preloader.js"></script>

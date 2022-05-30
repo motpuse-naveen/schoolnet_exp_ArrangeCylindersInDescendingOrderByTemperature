@@ -9,7 +9,7 @@
     height: 1px;
     width: 1px;
     left: 35px;
-    top: 200px;
+    top: 220px;
     z-index: 10;
 }
 .thermometer{
@@ -23,7 +23,7 @@
 }
 .thermotext{
     position: absolute;
-    top: 48%;
+    top: 27%;
     left: 38px;
     width: 60px;
     height: 24px;
@@ -52,10 +52,10 @@
 }
 
 .woodbase{
-    padding-top: 170px;
+    padding-top: 200px;
     background: url(../images/Cylinder_Base.svg);
     background-repeat: no-repeat;
-    background-position: 0px 175px;
+    background-position: 0px 210px;
     max-width: 690px;
     width: 100%;
     /*padding-bottom: 20px;*/
@@ -74,13 +74,19 @@ ul.cylinder-list li.cylinder {
     margin: 0px 15px;
     position: relative
 }
-li.cylinder.W_01{ width: 70px;}
-li.cylinder.W_02{ width: 60px;}
-li.cylinder.W_03{ width: 100px;}
-li.cylinder.W_04{ width: 90px;}
-li.cylinder.W_05{ width: 80px;}
-li.cylinder.W_06{ width: 45px;}
+li.cylinder.WDT_01{ width: 70px;}
+li.cylinder.WDT_02{ width: 60px;}
+li.cylinder.WDT_03{ width: 100px;}
+li.cylinder.WDT_04{ width: 90px;}
+li.cylinder.WDT_05{ width: 80px;}
+li.cylinder.WDT_06{ width: 45px;}
 
+li.cylinder.WDT_01 .data-label{top: 40%;}
+li.cylinder.WDT_02 .data-label{top: 34%;}
+li.cylinder.WDT_03 .data-label{top: 48%;}
+li.cylinder.WDT_04 .data-label{top: 46%;}
+li.cylinder.WDT_05 .data-label{top: 40%;}
+li.cylinder.WDT_06 .data-label{top: 28%;}
 
 li.cylinder div.item{
     position: absolute;
@@ -93,7 +99,7 @@ li.cylinder div.item{
     position: absolute;
     width: 100%;
     left: 0;
-    top: 46%;
+    top: 28%;
     text-align: center;
     color: #FFF;
     font-family: "Montserrat-Bold";
@@ -185,6 +191,26 @@ li.cylinder div.item{
     text-align: center;
     height: 35px;
 }
+.wrong_mc_wrap{
+    color: #bc0000;
+    display:none;
+}
+.correct_mc_wrap{
+    color: #00bf3a;
+    display:none;
+}
+.correct_mc_wrap span{
+    float: left;
+    font-family: 'Montserrat-Bold';
+    margin: 5px;
+    margin-top: 7px;
+}
+.wrong_mc_wrap span{
+    float: left;
+    font-family: 'Montserrat-Bold';
+    margin: 5px;
+    margin-top: 7px;
+}
 .wrong_mc {
     /*position: absolute;
     top: -45px;
@@ -197,7 +223,7 @@ li.cylinder div.item{
     text-align: center;
     font-weight: bold;
     font-size: 23px;
-    display:none;
+    float: left;
   }
   
   .correct_mc {
@@ -211,7 +237,7 @@ li.cylinder div.item{
     height: 35px;
     text-align: center;
     font-size: 23px;
-    display: none;
+    float: left;
   }
 
   .popup_inst .wrong {
@@ -251,7 +277,7 @@ li.cylinder div.item{
         height: 100%;
     }
     .thermotext{
-        top: 39%;
+        top: 27%;
         left: 34px;
         height: 20px;
     }
@@ -271,12 +297,12 @@ li.cylinder div.item{
         height: 45px;
         margin: 0px 13px;
     }
-    li.cylinder.W_01{ width: 60px;}
-    li.cylinder.W_02{ width: 50px;}
-    li.cylinder.W_03{ width: 85px;}
-    li.cylinder.W_04{ width: 75px;}
-    li.cylinder.W_05{ width: 70px;}
-    li.cylinder.W_06{ width: 40px;}
+    li.cylinder.WDT_01{ width: 60px;}
+    li.cylinder.WDT_02{ width: 50px;}
+    li.cylinder.WDT_03{ width: 85px;}
+    li.cylinder.WDT_04{ width: 75px;}
+    li.cylinder.WDT_05{ width: 70px;}
+    li.cylinder.WDT_06{ width: 40px;}
     .data-label {
         font-size: 14px;
     }
@@ -329,7 +355,7 @@ li.cylinder div.item{
         height: 100%;
     }
     .thermotext{
-        top: 39%;
+        top: 27%;
         left: 32px;
         height: 20px;
     }
@@ -349,16 +375,16 @@ li.cylinder div.item{
         height: 32px;
         margin: 0px 6px;
     }
-    li.cylinder.W_01{ width: 45px;}
-    li.cylinder.W_02{ width: 35px;}
-    li.cylinder.W_03{ width: 70px;}
-    li.cylinder.W_04{ width: 60px;}
-    li.cylinder.W_05{ width: 50px;}
-    li.cylinder.W_06{ width: 30px;}
+    li.cylinder.WDT_01{ width: 45px;}
+    li.cylinder.WDT_02{ width: 35px;}
+    li.cylinder.WDT_03{ width: 70px;}
+    li.cylinder.WDT_04{ width: 60px;}
+    li.cylinder.WDT_05{ width: 50px;}
+    li.cylinder.WDT_06{ width: 30px;}
 
     .data-label {
         font-size: 12px;
-        top: 42%;
+        top: 28%;
     }
     .thermoscale{
         font-size: 2px;
@@ -404,16 +430,16 @@ li.cylinder div.item{
         height: 32px;
         margin: 0px 6px;
     }
-    li.cylinder.W_01{ width: 35px;}
-    li.cylinder.W_02{ width: 30px;}
-    li.cylinder.W_03{ width: 60px;}
-    li.cylinder.W_04{ width: 50px;}
-    li.cylinder.W_05{ width: 40px;}
-    li.cylinder.W_06{ width: 25px;}
+    li.cylinder.WDT_01{ width: 35px;}
+    li.cylinder.WDT_02{ width: 30px;}
+    li.cylinder.WDT_03{ width: 60px;}
+    li.cylinder.WDT_04{ width: 50px;}
+    li.cylinder.WDT_05{ width: 40px;}
+    li.cylinder.WDT_06{ width: 25px;}
 
     .data-label {
         font-size: 12px;
-        top: 42%;
+        top: 28%;
     }
     .thermoscale{
         font-size: 2px;

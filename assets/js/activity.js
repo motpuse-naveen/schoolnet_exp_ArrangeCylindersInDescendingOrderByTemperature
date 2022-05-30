@@ -1,5 +1,5 @@
 var ActivityMain = (function () {
-    W_Array = [
+    var W_Array = [
         `<li class="cylinder W_01"><div class="item W_01"><img src="assets/images/W_01.svg" /><span class="data-label">D</span></div></li>`,
         `<li class="cylinder W_02"><div class="item W_02"><img src="assets/images/W_02.svg" /><span class="data-label">A</span></div></li>`,
         `<li class="cylinder W_03"><div class="item W_03"><img src="assets/images/W_03.svg" /><span class="data-label">B</span></div></li>`,
@@ -7,10 +7,19 @@ var ActivityMain = (function () {
         `<li class="cylinder W_05"><div class="item W_05"><img src="assets/images/W_05.svg" /><span class="data-label">E</span></div></li>`,
         `<li class="cylinder W_06"><div class="item W_06"><img src="assets/images/W_06.svg" /><span class="data-label">F</span></div></li>`
     ];
-    Data_Array = [
+    var Data_Array = [
         "D", "A", "B", "C", "F", "E"
     ];
-    TemperatureArray = [];
+    var TemperatureArray = [];
+
+    var WDTArray = [
+        "WDT_01",
+        "WDT_02",
+        "WDT_03",
+        "WDT_04",
+        "WDT_05",
+        "WDT_06",
+    ]
 
     return {
         LaunchActivity: function () {
@@ -18,8 +27,8 @@ var ActivityMain = (function () {
             this.BindJQueryUIMethods();
         },
         ResetActivity: function () {
-            var orgtop = $(".thermometerDragger").data('orgTop');
-            var orgleft = $(".thermometerDragger").data('orgLeft');
+            var orgtop = $(".thermometerDragger").attr('orgTop');
+            var orgleft = $(".thermometerDragger").attr('orgLeft');
             $(".thermometerDragger").css({
                 "left": orgleft,
                 "top": orgtop
@@ -28,21 +37,38 @@ var ActivityMain = (function () {
             this.BindJQueryUIMethods();
             ActivityMain.InitReadingCounter(Number($(".thermoreading").text()), 25, Number($(".thermoreading").text()));
 
-            $(".editableTextPad").val("")
-            $(".wrong_mc").hide();
-            $(".correct_mc").hide();
+            //$(".editableTextPad").val("")
+            $(".wrong_mc_wrap").hide();
+            $(".correct_mc_wrap").hide();
         },
         OnOrientationChange: function () {
         },
         BindJQueryUIMethods: function () {
             //Bind Sortable
-            $("#cylinder-list").sortable({
+            new Sortable(document.getElementById('cylinder-list'), {
+                group: 'shared',
+                onStart: (evt) => {
+                    $(".contWraper").removeAttr("style");
+                    $(".contWraper").removeAttr("pz-scale")
+                    ScreenSplitter.ResetSplit();
+                    var orgtop = $(".thermometerDragger").attr('orgTop');
+                    var orgleft = $(".thermometerDragger").attr('orgLeft');
+                    $(".thermometerDragger").css({
+                        "left": orgleft + "px",
+                        "top": orgtop + "px"
+                    })
+                    ActivityMain.InitReadingCounter(Number($(".thermoreading").text()), 25, Number($(".thermoreading").text()));
+                },
+                onEnd: (evt) => {
+                }
+            });
+            /*$("#cylinder-list").sortable({
                 start: function( event, ui ) {
                     $(".contWraper").removeAttr("style");
                     $(".contWraper").removeAttr("pz-scale")
                     ScreenSplitter.ResetSplit();
-                    var orgtop = $(".thermometerDragger").data('orgTop');
-                    var orgleft = $(".thermometerDragger").data('orgLeft');
+                    var orgtop = $(".thermometerDragger").attr('orgTop');
+                    var orgleft = $(".thermometerDragger").attr('orgLeft');
                     $(".thermometerDragger").css({
                         "left": orgleft,
                         "top": orgtop
@@ -52,14 +78,15 @@ var ActivityMain = (function () {
                 }
               })
                 .disableSelection();
+                */
 
             //Bind Draggable
             $(".thermometerDragger").draggable({
                 //revert: "invalid",
                 revert: function (event, ui) {
                     $(this).data("uiDraggable").originalPosition = {
-                        top: $(this).data('orgTop'),
-                        left: $(this).data('orgLeft')
+                        top: $(this).attr('orgTop'),
+                        left: $(this).attr('orgLeft')
                     };
                     /*
                     if (!event) {
@@ -67,7 +94,7 @@ var ActivityMain = (function () {
                     }*/
                     return !event;
                 },
-                start: function(event,ui){
+                start: function (event, ui) {
                     $(".contWraper").removeAttr("style");
                     $(".contWraper").removeAttr("pz-scale")
                     ScreenSplitter.ResetSplit();
@@ -75,8 +102,8 @@ var ActivityMain = (function () {
             }).each(function () {
                 var top = $(this).position().top;
                 var left = $(this).position().left;
-                $(this).data('orgTop', top);
-                $(this).data('orgLeft', left);
+                $(this).attr('orgTop', top);
+                $(this).attr('orgLeft', left);
             });
 
             //Bind Droppable
@@ -103,9 +130,11 @@ var ActivityMain = (function () {
             }
             temperatures = this.Shuffle(temperatures);
             TemperatureArray = [];
+            var locWDTArray = this.Shuffle(WDTArray)
+
             for (var i = 0; i < locWArray.length; i++) {
                 temperature = (30 + 11 * i + Number(7 * Math.random()))
-                var locCylinder = $(locWArray[i]).attr("temperature", temperatures[i]).attr("datalabel", locDataArray[i]);
+                var locCylinder = $(locWArray[i]).attr("temperature", temperatures[i]).attr("datalabel", locDataArray[i]).addClass(locWDTArray[i]);
                 TemperatureArray.push({ label: locDataArray[i], temperature: temperatures[i] })
                 locCylinder.find(".data-label").text(locDataArray[i]);
                 $("#cylinder-list").append(locCylinder);
@@ -146,12 +175,12 @@ var ActivityMain = (function () {
             });
             console.log(result)
             if (JSON.stringify(result) == JSON.stringify(TemperatureArray)) {
-                $(".wrong_mc").hide();
-                $(".correct_mc").show();
+                $(".wrong_mc_wrap").hide();
+                $(".correct_mc_wrap").show();
             }
             else {
-                $(".wrong_mc").show();
-                $(".correct_mc").hide();
+                $(".wrong_mc_wrap").show();
+                $(".correct_mc_wrap").hide();
             }
         },
         AnswerActivity: function () {
@@ -206,7 +235,7 @@ function DisplayTemperatureBar(currPerc) {
 
 $(document).on("click", "#btn_reset", function (event) {
     $(".contWraper").removeAttr("style");
-                    $(".contWraper").removeAttr("pz-scale")
+    $(".contWraper").removeAttr("pz-scale")
     ScreenSplitter.ResetSplit();
     ActivityMain.ResetActivity();
     $("#btn_ok").show();
@@ -227,11 +256,11 @@ $(document).on("click", "#btn_answer", function (event) {
 });
 $(document).on("click", "#btn_speed", function (event) {
     speedAnswerActive = true
-    setInterval(function(){
-        if(CancelledAnswerAction){
+    setInterval(function () {
+        if (CancelledAnswerAction) {
             bubbleSortSpeed();
         }
-    },100)
+    }, 100)
     $("#btn_speed").hide();
 });
 
@@ -252,10 +281,10 @@ async function bubbleSort(delay = 100) {
     let blocks = document.querySelectorAll(".cylinder");
     for (let i = 0; i < blocks.length - 1; i += 1) {
         for (let j = 0; j < blocks.length - i - 1; j += 1) {
-            if (speedAnswerActive){
+            if (speedAnswerActive) {
                 CancelledAnswerAction = true
                 return;
-            } 
+            }
             await new Promise(resolve =>
                 setTimeout(() => {
                     resolve();
@@ -270,6 +299,7 @@ async function bubbleSort(delay = 100) {
             }
         }
     }
+    $("#btn_speed").hide();
 }
 
 var speedAnswerActive = false;
