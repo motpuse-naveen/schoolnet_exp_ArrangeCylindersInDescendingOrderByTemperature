@@ -30,8 +30,8 @@ var ActivityMain = (function () {
             var orgtop = $(".thermometerDragger").attr('orgTop');
             var orgleft = $(".thermometerDragger").attr('orgLeft');
             $(".thermometerDragger").css({
-                "left": orgleft,
-                "top": orgtop
+                "left": orgleft + "px",
+                "top": orgtop + "px"
             })
             this.ResetCylinders();
             this.BindJQueryUIMethods();
@@ -42,6 +42,13 @@ var ActivityMain = (function () {
             $(".correct_mc_wrap").hide();
         },
         OnOrientationChange: function () {
+            var orgtop = $(".thermometerDragger").attr('orgTop');
+            var orgleft = $(".thermometerDragger").attr('orgLeft');
+            $(".thermometerDragger").css({
+                "left": orgleft + "px",
+                "top": orgtop + "px"
+            })
+            ActivityMain.InitReadingCounter(Number($(".thermoreading").text()), 25, Number($(".thermoreading").text()));
         },
         BindJQueryUIMethods: function () {
             //Bind Sortable
@@ -97,7 +104,7 @@ var ActivityMain = (function () {
                 start: function (event, ui) {
                     $(".contWraper").removeAttr("style");
                     $(".contWraper").removeAttr("pz-scale")
-                    ScreenSplitter.ResetSplit();
+                    //ScreenSplitter.ResetSplit();
                 }
             }).each(function () {
                 var top = $(this).position().top;
