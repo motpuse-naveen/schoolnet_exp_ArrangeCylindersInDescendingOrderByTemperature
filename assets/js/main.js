@@ -67,7 +67,7 @@ var ActivityShell = (function () {
         $(".container-so.main").show();
         this.AdjustContainerHeight();
         ScreenSplitter.InitSplitter();
-        //GuidedTour.Init();
+        GuidedTour.Init();
         ActivityMain.LaunchActivity();
         /* Scale Spring to fit */
         ScreenSplitter.ScaleToFit($("#split-0"));
