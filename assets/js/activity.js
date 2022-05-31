@@ -42,12 +42,18 @@ var ActivityMain = (function () {
             $(".correct_mc_wrap").hide();
         },
         OnOrientationChange: function () {
-            var orgtop = $(".thermometerDragger").attr('orgTop');
+            /*var orgtop = $(".thermometerDragger").attr('orgTop');
             var orgleft = $(".thermometerDragger").attr('orgLeft');
             $(".thermometerDragger").css({
                 "left": orgleft + "px",
                 "top": orgtop + "px"
-            })
+            })*/
+            $(".thermometerDragger").attr("style","").each(function () {
+                var top = $(this).position().top;
+                var left = $(this).position().left;
+                $(this).attr('orgTop', top);
+                $(this).attr('orgLeft', left);
+            });;
             ActivityMain.InitReadingCounter(Number($(".thermoreading").text()), 25, Number($(".thermoreading").text()));
         },
         BindJQueryUIMethods: function () {
@@ -57,7 +63,7 @@ var ActivityMain = (function () {
                 onStart: (evt) => {
                     $(".contWraper").removeAttr("style");
                     $(".contWraper").removeAttr("pz-scale")
-                    ScreenSplitter.ResetSplit();
+                    //ScreenSplitter.ResetSplit();
                     var orgtop = $(".thermometerDragger").attr('orgTop');
                     var orgleft = $(".thermometerDragger").attr('orgLeft');
                     $(".thermometerDragger").css({
@@ -105,6 +111,26 @@ var ActivityMain = (function () {
                     $(".contWraper").removeAttr("style");
                     $(".contWraper").removeAttr("pz-scale")
                     //ScreenSplitter.ResetSplit();
+                    var scaleval = $(".content-container.cc").attr("scale")
+                    if (scaleval != undefined && scaleval != "") {
+                        scaleval = Number(scaleval);
+                    }
+                    else {
+                        scaleval = 1;
+                    }
+                    ui.position.top = ui.position.top / scaleval;
+                    ui.position.left = ui.position.left / scaleval;
+                },
+                drag: function (event, ui) {
+                    var scaleval = $(".content-container.cc").attr("scale")
+                    if (scaleval != undefined && scaleval != "") {
+                        scaleval = Number(scaleval);
+                    }
+                    else {
+                        scaleval = 1;
+                    }
+                    ui.position.top = ui.position.top / scaleval;
+                    ui.position.left = ui.position.left / scaleval;
                 }
             }).each(function () {
                 var top = $(this).position().top;
@@ -114,12 +140,36 @@ var ActivityMain = (function () {
             });
 
             //Bind Droppable
+            $("li.cylinder .item").each(function () {
+                //$(this).closest("li.cylinder").css("height",$(this).height());
+            })
             $("li.cylinder .item").droppable({
                 accept: ".thermometerDragger",
                 tolerance: "touch",
                 drop: function (event, ui) {
-                    var t_to = $(event.target).closest("li.cylinder").attr("temperature")
+                    var cylinder = $(event.target).closest("li.cylinder")
+                    var t_to = cylinder.attr("temperature")
                     t_to = Number(t_to)
+                    var scaleval = $(".content-container.cc").attr("scale")
+                    if (scaleval != undefined && scaleval != "") {
+                        scaleval = Number(scaleval);
+                    }
+                    else {
+                        scaleval = 1;
+                    }
+                    if (scaleval == 1) {
+                        var cpos = cylinder.position();
+                        try {
+                            var fixLeft = cpos.left + (cylinder.width() / 4 * 1);
+                            var fixTop = cpos.top + (cylinder.find(".item").height() / 3 * 1)
+                            if (cylinder.height() > cylinder.find(".item").height()) {
+                                var htdiff = cylinder.height() - cylinder.find(".item").height();
+                                var fixTop = cpos.top + ((cylinder.find(".item").height() + htdiff) / 3 * 2)
+                            }
+                            $(".thermometerDragger").css({ left: fixLeft / scaleval, top: fixTop / scaleval });
+                        }
+                        catch (derr) { }
+                    }
                     ActivityMain.InitReadingCounter(25, t_to, 25);
                 },
                 out: function (event, ui) {

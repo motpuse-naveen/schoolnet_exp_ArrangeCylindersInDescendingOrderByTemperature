@@ -28,6 +28,10 @@ var ScreenSplitter = (function () {
         InitSplitter: function (p_sizes, whenresize) {
             $("#split-main").removeClass("v-split-main").removeClass("h-split-main");
             $("#split-main").removeAttr("style")
+            if ($(".popup").is(":visible")) {
+                var spltWdt = $(".wrapper").width();
+                $("#split-main").css({ "width": spltWdt - POPUP_WIDTH })
+            }
             if(whenresize!=undefined && whenresize!=null && whenresize==true){
                 if(window.screen.availWidth<730){
                     $("#split-main").addClass("v-split-main");

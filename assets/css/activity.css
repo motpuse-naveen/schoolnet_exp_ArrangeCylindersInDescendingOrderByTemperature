@@ -8,7 +8,7 @@
     position: absolute;
     height: 1px;
     width: 1px;
-    left: 35px;
+    left: 0px;
     top: 220px;
     z-index: 10;
 }
@@ -57,9 +57,10 @@
     background-repeat: no-repeat;
     background-position: 0px 176px;
     max-width: 660px;
-    width: 100%;
+    width: 660px;
     /*padding-bottom: 20px;*/
     margin: 0 auto;
+    position: relative;
 }
 ul.cylinder-list {
     list-style-type: none;
@@ -271,10 +272,10 @@ li.cylinder div.item{
         background: url(../images/Cylinder_Base.svg);
         background-repeat: no-repeat;
         background-position: -6px 315px;
-        max-width: 485px;
+        max-width: 462px;
+        width: 462px;
     }
     .thermometerDragger{
-        left: 15px;
         top: 300px;
         z-index: 10;
     }
@@ -295,6 +296,7 @@ li.cylinder div.item{
         top: 27%;
         left: 34px;
         height: 20px;
+        width: 40px;
     }
     .thermotext_arrow{
         height: 17px;
@@ -310,7 +312,7 @@ li.cylinder div.item{
     }
     ul.cylinder-list li.cylinder {
         height: 45px;
-        margin: 0px 10px;
+        margin: 0px 8px;
     }
     li.cylinder.WDT_01{ width: 50px;}
     li.cylinder.WDT_02{ width: 45px;}
@@ -367,9 +369,9 @@ li.cylinder div.item{
         background-repeat: no-repeat;
         background-position: -6px 315px;
         max-width: 485px;
+        width: 485px;
     }
     .thermometerDragger{
-        left: 15px;
         top: 300px;
         z-index: 10;
     }
@@ -457,7 +459,6 @@ li.cylinder div.item{
 
   @media only screen and (max-width: 610px) {
     .thermometerDragger{
-        left: 15px;
         top: 170px;
     }
     .thermometer{
@@ -531,6 +532,7 @@ li.cylinder div.item{
         background: url(../images/Cylinder_Base.svg);
         background-repeat: no-repeat;
         background-position: -7px 225px;
+        width: 368px;
     }
   }
 
@@ -582,6 +584,7 @@ li.cylinder div.item{
     }
     .woodbase{
         max-width: 302px;
+        width: 302px;
         padding-top: 216px;
         background: url(../images/Cylinder_Base.svg);
         background-repeat: no-repeat;
@@ -597,11 +600,10 @@ li.cylinder div.item{
 
   @media screen and (orientation: landscape) and (max-device-height: 610px) {
     .thermometerDragger{
-        left: 15px;
         top: 200px;
     }
     .thermometer{
-        height: 150px;
+        height: 120px;
     }
     .thermometer img.thermo{
         height: 100%;
@@ -640,9 +642,9 @@ li.cylinder div.item{
         top: 28%;
     }
     .thermoscale{
-        font-size: 3px;
-        top: 6px;
-        left: 6px;
+        font-size: 2px;
+        top: 3px;
+        left: 5px;
     }
     .thermoscalebottom{
         left: 6px;
@@ -653,24 +655,25 @@ li.cylinder div.item{
     }
     .thermoscale span.number {
         border-bottom: 0.5px solid #000;
-        width: 7px;
+        width: 5px;
     }
     .thermored{
-        left: 5px;
+        left: 4px;
         height: 23.5%;
     }
     .thermoredbottom{
-        bottom: -28px;
-        left: 5px;
+        bottom: -21px;
+        left: 4px;
         width: 1px;
-        height: 32%;
+        height: 30%;
     }
     .woodbase{
         max-width: 450px;
-        padding-top: 140px;
+        width: 450px;
+        padding-top: 120px;
         background: url(../images/Cylinder_Base.svg);
         background-repeat: no-repeat;
-        background-position: -7px 144px;
+        background-position: -7px 124px;
     }
     .activityText{
         font-size: 14px;
