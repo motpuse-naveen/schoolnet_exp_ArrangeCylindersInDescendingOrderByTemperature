@@ -47,8 +47,8 @@
   background-color: var(--theme-pri-color);
   border: 1px solid var(--theme-btn-border);
   text-align: center;
-  margin: 8px;
-  width: 85px;
+  margin: 8px 5px;
+  min-width: 60px;
   line-height: 1.2;
 }
 .button_style:hover {
@@ -564,6 +564,10 @@ svg .cls-101{fill:none;stroke:var(--theme-pri-text-color);stroke-linecap:round;s
 .exp_body_content {
   position: relative;
   overflow: auto;
+}
+.button_style.gt-clone{
+  margin-top: 0px;
+  margin-left: 0px;
 }
 #split-main{
   overflow:auto;
