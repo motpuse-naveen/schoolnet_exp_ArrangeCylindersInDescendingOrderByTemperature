@@ -67,7 +67,6 @@ var ActivityShell = (function () {
         $(".container-so.main").show();
         this.AdjustContainerHeight();
         ScreenSplitter.InitSplitter();
-        GuidedTour.Init();
         ActivityMain.LaunchActivity();
         /* Scale Spring to fit */
         ScreenSplitter.ScaleToFit($("#split-0"));
@@ -82,6 +81,10 @@ var ActivityShell = (function () {
           hammerItScrollableContent(document.querySelector(".zoom2"));
           zoom2 = "zoom2";
         }
+        setTimeout(function(){
+          GuidedTour.Init();
+        },500);
+        
       /*}*/
     },
     AdjustContainerHeight: function () {

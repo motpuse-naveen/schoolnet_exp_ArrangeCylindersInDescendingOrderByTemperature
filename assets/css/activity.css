@@ -456,6 +456,7 @@ li.cylinder div.item{
         font-size: 14px !important;
     }
   }
+  
 
   @media only screen and (max-width: 610px) {
     .thermometerDragger{
@@ -533,6 +534,16 @@ li.cylinder div.item{
         background-repeat: no-repeat;
         background-position: -7px 225px;
         width: 368px;
+    }
+  }
+
+  @media only screen and (max-width: 490px) {
+    .button_style{
+        padding: 0.375rem 0.4rem;
+        min-width: 50px;
+    }
+    .container-so.main .exp_footer .footer{
+        padding-left: 46px;
     }
   }
 
@@ -679,5 +690,7 @@ li.cylinder div.item{
         font-size: 14px;
     }
   }
+
+  
 
 
