@@ -183,7 +183,7 @@ var ActivityMain = (function () {
             var locDataArray = this.Shuffle(Data_Array)
             var temperatures = [];
             for (var i = 0; i < locWArray.length; i++) {
-                temperatures.push(Number((30 + 11 * i + Number(7 * Math.random())).toFixed(0)))
+                temperatures.push(Number((30 + 11 * i + Number(7 * Math.random())).toFixed(1)))
             }
             temperatures = this.Shuffle(temperatures);
             TemperatureArray = [];

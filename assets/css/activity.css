@@ -25,7 +25,7 @@
     position: absolute;
     top: 27%;
     left: 38px;
-    width: 52px;
+    width: 62px;
     height: 24px;
     outline:2px solid var(--theme-pri-color);
 }
@@ -296,7 +296,7 @@ li.cylinder div.item{
         top: 27%;
         left: 34px;
         height: 20px;
-        width: 40px;
+        width: 46px;
     }
     .thermotext_arrow{
         height: 17px;
@@ -472,7 +472,7 @@ li.cylinder div.item{
         top: 27%;
         left: 32px;
         height: 20px;
-        width: 46px;
+        width: 50px;
     }
     .thermotext_arrow{
         height: 17px;
@@ -605,7 +605,7 @@ li.cylinder div.item{
         width: auto;
     }
     .thermotext{
-        width: 40px;
+        width: 46px;
     }
   }
 
@@ -623,7 +623,7 @@ li.cylinder div.item{
         top: 27%;
         left: 32px;
         height: 20px;
-        width: 46px;
+        width: 50px;
     }
     .thermotext_arrow{
         height: 17px;
@@ -690,6 +690,21 @@ li.cylinder div.item{
         font-size: 14px;
     }
   }
+
+  @media 
+  (max-device-width: 800px) 
+  and (orientation: portrait)
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    
+}
+
+/* Landscape */
+@media 
+  (max-device-width: 1280px) 
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+}
 
   
 

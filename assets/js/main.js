@@ -282,15 +282,7 @@ document.ontouchmove = function (event) {
   catch (err) { }
 }
 
-$(window).bind('orientationchange', function () {
-  this.setTimeout(function () {
-    ActivityShell.OnOrientationChange();
-  }, 200);
-});
 
-$(window).resize(function () {
-  ActivityShell.OnWindowResize();
-});
 
 $(document).on("click", "#btn_launch", function (event) {
   ActivityShell.LaunchActivity();
@@ -361,4 +353,22 @@ $(document).on('shown.bs.tooltip', function (e) {
   setTimeout(function () {
     $(e.target).tooltip('hide');
   }, 1500);
+});
+
+$(window).resize(function () {
+  ActivityShell.OnWindowResize();
+});
+
+/*
+$(window).bind('orientationchange', function () {
+  this.setTimeout(function () {
+    //ActivityShell.OnOrientationChange();
+  }, 100);
+});
+*/
+
+window.addEventListener("orientationchange", (event) => {
+  setTimeout(function () {
+    ActivityShell.OnOrientationChange();
+  }, 100);
 });

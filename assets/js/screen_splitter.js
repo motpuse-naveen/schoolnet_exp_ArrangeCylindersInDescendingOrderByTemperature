@@ -71,7 +71,7 @@ var ScreenSplitter = (function () {
             $("#split-0").removeAttr("style");
             $("#split-1").removeAttr("style");
             split_instance = Split(['#split-0', '#split-1'], {
-                minSize: 50,
+                minSize: 200,
                 sizes: loc_sizes,
                 gutterSize: 1,
                 onDrag: function (sizes) {
@@ -97,7 +97,7 @@ var ScreenSplitter = (function () {
             $("#split-0").removeAttr("style");
             $("#split-1").removeAttr("style");
             split_instance = Split(['#split-0', '#split-1'], {
-                minSize: 50,
+                minSize: 300,
                 sizes: loc_sizes,
                 direction: 'vertical',
                 gutterSize: 1,
