@@ -618,7 +618,8 @@ li.cylinder div.item{
 
   @media screen and (orientation: landscape) and (max-device-height: 610px) {
     .thermometerDragger{
-        top: 200px;
+        top: 155px;
+        left: -30px;
     }
     .thermometer{
         height: 120px;

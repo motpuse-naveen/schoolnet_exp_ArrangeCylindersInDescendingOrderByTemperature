@@ -25,13 +25,25 @@ var ActivityMain = (function () {
         LaunchActivity: function () {
             this.ResetCylinders();
             this.BindJQueryUIMethods();
+            $(".thermometerDragger").attr("style","").each(function () {
+                var top = $(this).position().top;
+                var left = $(this).position().left;
+                $(this).attr('orgTop', top);
+                $(this).attr('orgLeft', left);
+            });
         },
         ResetActivity: function () {
+            debugger;
             var orgtop = $(".thermometerDragger").attr('orgTop');
             var orgleft = $(".thermometerDragger").attr('orgLeft');
+            var scaleFactor = $("#split-0 .content-container.cc.split-scaled").attr("scale");
+            if(scaleFactor==undefined || scaleFactor == "" || scaleFactor == null){
+                scaleFactor = 1;
+            }
+            scaleFactor = Number(scaleFactor);
             $(".thermometerDragger").css({
-                "left": orgleft + "px",
-                "top": orgtop + "px"
+                "left": orgleft * scaleFactor + "px",
+                "top": orgtop * scaleFactor + "px"
             })
             this.ResetCylinders();
             this.BindJQueryUIMethods();
@@ -53,7 +65,7 @@ var ActivityMain = (function () {
                 var left = $(this).position().left;
                 $(this).attr('orgTop', top);
                 $(this).attr('orgLeft', left);
-            });;
+            });
             ActivityMain.InitReadingCounter(Number($(".thermoreading").text()), 25, Number($(".thermoreading").text()));
         },
         BindJQueryUIMethods: function () {
@@ -133,10 +145,10 @@ var ActivityMain = (function () {
                     ui.position.left = ui.position.left / scaleval;
                 }
             }).each(function () {
-                var top = $(this).position().top;
+                /*var top = $(this).position().top;
                 var left = $(this).position().left;
                 $(this).attr('orgTop', top);
-                $(this).attr('orgLeft', left);
+                $(this).attr('orgLeft', left);*/
             });
 
             //Bind Droppable
