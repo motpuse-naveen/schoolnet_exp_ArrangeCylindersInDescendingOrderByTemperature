@@ -313,10 +313,10 @@
 
   .wrapper[device="mobile"] #split-0,
   .wrapper[device="mobile"] #split-1 {
-    height: 100% !important;
+    /*height: 100% !important;
     max-height: 100%;
     float: left;
-    overflow: auto;
+    overflow: auto;*/
   }
 
   .col-sm-12 {

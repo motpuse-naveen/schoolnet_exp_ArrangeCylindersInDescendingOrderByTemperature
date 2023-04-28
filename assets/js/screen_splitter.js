@@ -23,7 +23,7 @@ var ScreenSplitter = (function () {
     </g>
 </svg>
     </div>`;
-
+    var g_SplitContentSize = [];
     return {
         InitSplitter: function (p_sizes, whenresize) {
             $("#split-main").removeClass("v-split-main").removeClass("h-split-main");
@@ -93,11 +93,12 @@ var ScreenSplitter = (function () {
             if(p_sizes!=null && p_sizes!=undefined && p_sizes.length>1){
                 loc_sizes = p_sizes;
             }
+            var minsizes = this.GetMinSizeLimits();
             $(".gutter").remove();
             $("#split-0").removeAttr("style");
             $("#split-1").removeAttr("style");
             split_instance = Split(['#split-0', '#split-1'], {
-                minSize: [200,100],
+                minSize: minsizes,
                 sizes: loc_sizes,
                 direction: 'vertical',
                 gutterSize: 1,
@@ -113,6 +114,65 @@ var ScreenSplitter = (function () {
                 }
             })
             $(".gutter").append(verticalHandle)
+        },
+        InitDragLimit: function () {
+            /* NM: Calculate scale ratio and min size for spliter */
+            var sprcontht = 0;
+            g_SplitContentSize = [
+                $("#split-0 .content-container.cc").height(),
+                $("#split-1 .content-container.sp").height(),
+            ];
+            this.VerticalSplit();
+
+            //NM: Specific to SpringOscillation.
+            //$("#split-0 .content-container.cc").css({ "height": g_SplitContentSize[0] + "px" })
+            //$("#split-1 .content-container.sp").css({ "height": g_SplitContentSize[1] + "px" })
+        },
+        GetMinSizeLimits: function(){
+            var minsizes = [200, 100]
+            
+            if (g_SplitContentSize.length == 2) {
+                //debugger;
+                var totalHt = $("#split-main").height();
+                //var partOfTotal0 = Math.trunc(totalHt / g_SplitContentSize[0]);
+                var partOfTotal0 = totalHt / g_SplitContentSize[0];
+                if (partOfTotal0 >= 4) {
+                    partOfTotal0 = 4
+                }
+                else if(partOfTotal0 >= 3 ){
+                    partOfTotal0 = 3.7;
+                }
+                else if(partOfTotal0>=2){
+                    partOfTotal0 = 3.7;
+                }
+                else{
+                    partOfTotal0 = 3.7;
+                }
+                //var partOfTotal1 = Math.trunc(totalHt / g_SplitContentSize[1]);
+                //debugger
+                var partOfTotal1 = totalHt / g_SplitContentSize[1];
+                if (partOfTotal1 > 5) {
+                    partOfTotal1 = 4
+                }
+                else if (partOfTotal1 >= 4) {
+                    partOfTotal1 = 4
+                }
+                else if(partOfTotal1 >= 3){
+                    partOfTotal1 = 3.5;
+                }
+                else if(partOfTotal1>=2){
+                    partOfTotal1 = 3.5;
+                }
+                else{
+                    partOfTotal1 = 3.5;
+                }
+                minsizes = [
+                    g_SplitContentSize[0] / 4 * partOfTotal0,
+                    g_SplitContentSize[1] / 4 * partOfTotal1,
+                ]
+            }
+
+            return minsizes;
         },
         ScaleToFit: function ($wrapper,$element, deltaWidth, deltaHeight, splittype) {
             if($element==null || $element == undefined){

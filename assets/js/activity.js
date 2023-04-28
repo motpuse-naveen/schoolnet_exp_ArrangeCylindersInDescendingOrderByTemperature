@@ -33,7 +33,7 @@ var ActivityMain = (function () {
             });
         },
         ResetActivity: function () {
-            debugger;
+        
             var orgtop = $(".thermometerDragger").attr('orgTop');
             var orgleft = $(".thermometerDragger").attr('orgLeft');
             var scaleFactor = $("#split-0 .content-container.cc.split-scaled").attr("scale");
@@ -246,10 +246,14 @@ var ActivityMain = (function () {
             if (JSON.stringify(result) == JSON.stringify(TemperatureArray)) {
                 $(".wrong_mc_wrap").hide();
                 $(".correct_mc_wrap").show();
+                $("#btn_ok").hide();
+                $("#btn_answer").hide();
             }
             else {
                 $(".wrong_mc_wrap").show();
                 $(".correct_mc_wrap").hide();
+                $("#btn_ok").show();
+                $("#btn_answer").show();
             }
         },
         AnswerActivity: function () {
@@ -270,11 +274,11 @@ function AnnimateIncreaseInReading() {
         $(".thermored").css({ "height": ThermoReading.current + "%" })
         if (ThermoReading.current >= ThermoReading.to) {
             clearInterval(ThermoReadingInterval);
-            $(".thermoreading").text(ThermoReading.to)
+            $(".thermoreading").text((ThermoReading.to).toFixed(1));
             DisplayTemperatureBar(ThermoReading.to);
         }
         else {
-            $(".thermoreading").text(ThermoReading.current)
+            $(".thermoreading").text((ThermoReading.current).toFixed(1));
             DisplayTemperatureBar(ThermoReading.current);
         }
     }, 10)
@@ -285,11 +289,11 @@ function AnnimateDecreaseInReading() {
         ThermoReading.current = ThermoReading.current - 1;
         if (ThermoReading.current <= ThermoReading.to) {
             clearInterval(ThermoReadingInterval);
-            $(".thermoreading").text(ThermoReading.to)
+            $(".thermoreading").text((ThermoReading.to).toFixed(1));
             DisplayTemperatureBar(ThermoReading.to);
         }
         else {
-            $(".thermoreading").text(ThermoReading.current)
+            $(".thermoreading").text((ThermoReading.current).toFixed(1));
             DisplayTemperatureBar(ThermoReading.current);
         }
     }, 5)

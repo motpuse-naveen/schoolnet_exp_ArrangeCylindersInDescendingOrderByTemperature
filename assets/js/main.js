@@ -67,6 +67,7 @@ var ActivityShell = (function () {
         $(".container-so.main").show();
         this.AdjustContainerHeight();
         ScreenSplitter.InitSplitter();
+        ScreenSplitter.InitDragLimit();
         ActivityMain.LaunchActivity();
         /* Scale Spring to fit */
         ScreenSplitter.ScaleToFit($("#split-0"));
@@ -198,6 +199,7 @@ var ActivityShell = (function () {
     OnOrientationChange: function () {
       this.AdjustContainerHeight();
       ScreenSplitter.InitSplitter();
+      ScreenSplitter.InitDragLimit();
       if ($(".popup").is(":visible")) {
         this.AdjustSplitPanelsOnOpenPopup($(".popup:visible"));
       }
@@ -235,6 +237,7 @@ var ActivityShell = (function () {
       if (deviceType == "desktop") {
         this.AdjustContainerHeight();
         ScreenSplitter.InitSplitter(null,true);
+        ScreenSplitter.InitDragLimit();
         if ($(".popup").is(":visible")) {
           this.AdjustSplitPanelsOnOpenPopup($(".popup:visible"));
         }
